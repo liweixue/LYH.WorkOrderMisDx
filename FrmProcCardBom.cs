@@ -34,7 +34,9 @@ namespace LYH.WorkOrder
         {
             var sql = $"SELECT Craft FROM PD_ProcCard_Craft WHERE DeptId='{SqlHelper.DeptId}' ORDER BY ID";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnectionString("dzdj"), CommandType.Text, sql);
-            cbxCraft.SpellSearchSource = (from DataRow dr in ds.Tables[0].Rows where !Convert.IsDBNull(dr[0]) select dr[0].ToString().Trim()).ToArray();
+            cbxCraft.SpellSearchSource =
+                (from DataRow dr in ds.Tables[0].Rows where !Convert.IsDBNull(dr[0]) select dr[0].ToString().Trim())
+                    .ToArray();
             var acsc = new AutoCompleteStringCollection();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
@@ -80,7 +82,7 @@ namespace LYH.WorkOrder
 
         private void txtSn_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSn.Text)&&!ValidateUtil.IsNumber(txtSn.Text))
+            if (!string.IsNullOrEmpty(txtSn.Text) && !ValidateUtil.IsNumber(txtSn.Text))
             {
                 MessageBox.Show(Resources.IsNotNumber, Resources.T提示);
                 txtSn.Text = "";
@@ -230,7 +232,8 @@ namespace LYH.WorkOrder
             if (MessageBox.Show("是否要删除所选择的行", Resources.J警告, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) ==
                 DialogResult.OK)
             {
-                var sql = $"delete FROM udtwo WHERE IDL='{mMi}'";
+                var sql = $"DELETE FROM udtwo WHERE IDL='{mMi}';" +
+                          $"UPDATE udtwo SET xuhaoone=xuhaoone-1 WHERE xuhaoone>{dataGridView1.SelectedCells[1].Value.ToString().Trim()};";
                 SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
                 BindData();
             }
@@ -448,12 +451,12 @@ namespace LYH.WorkOrder
         /// <param name="e"></param>
         private void btnIns_Click(object sender, EventArgs e)
         {
-            if (txtWONo.Text == "")
+            if (string.IsNullOrEmpty(txtWONo.Text))
             {
                 MessageBox.Show(@"工单号不能为空！", Resources.T提示);
                 txtWONo.Focus();
             }
-            else if (txtSn.Text == "")
+            else if (string.IsNullOrEmpty(txtSn.Text))
             {
                 MessageBox.Show(@"序号不能为空！", Resources.T提示);
                 txtSn.Focus();
@@ -461,27 +464,21 @@ namespace LYH.WorkOrder
             else
             {
                 var sql =
-                    $"SELECT count(*) FROM tf_sgdantwo WHERE shigongdanhao='{txtWONo.Text.Trim()}' AND xuhao between '{txtSn.Text.Trim()}' AND '{decimal.Parse(txtSn.Text.Trim()) + 1}'";
-                var dr = SqlHelper.ExecuteReader(SqlHelper.GetConnSting(), CommandType.Text, sql);
-                if (dr.HasRows)
-                {
-                    dr.Read();
-                    if (int.Parse(dr[0].ToString().Trim()) > 2)
-                    {
-                        dr.Close();
-                        sql =
-                            $"SELECT TOP 1 * FROM tf_sgdantwo WHERE shigongdanhao='{txtWONo.Text.Trim()}' AND xuhao like '{txtSn.Text.Trim()}.%' " +
-                            "order by xuhao desc";
-                        dr = SqlHelper.ExecuteReader(SqlHelper.GetConnSting(), CommandType.Text, sql);
-                        dr.Read();
-                        txtSn.Text = dr["xuhao"].ToString().Trim();
-                    }
-                    var sn = decimal.Parse(txtSn.Text);
-                    txtSn.Text = sn.ToString(CultureInfo.InvariantCulture);
-                    cbxCraft.Focus();
-                    btnUpd.Enabled = false;
-                    btnDel.Enabled = false;
-                }
+                    $"UPDATE udtwo SET xuhaoone=xuhaoone+1 WHERE xuhaoone>='{txtSn.Text.Trim()}';" +
+                    "INSERT INTO udtwo(DeptId,tuhao,yema,xuhaoone,xuhaotwo,xuhaoname,zuone,zutwo,xuj1,xuj2,xuj3," +
+                    $"beizu1,cje) values('{SqlHelper.DeptId}','{txtDwgNo.Text.Trim()}','{txtPageNo.Text.Trim()}',{txtSn.Text.Trim()}," +
+                    $"{txtProcessSn.Text.Trim()},'{cbxCraft.Text.Trim()}','{txtAdjustingTime.Text.Trim()}'," +
+                    $"'{txtProcessTime.Text.Trim()}','{txtUprice.Text.Trim()}','{txtFormula.Text.Trim()}'," +
+                    $"'{txtSubsidy.Text.Trim()}','{txtRemark.Text.Trim()}','{SqlHelper.UserName}')";
+                SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
+                btnAdd.Text = Resources.A新增;
+                var seq = int.Parse(txtSn.Text);
+                EnableBtn(true);
+                ClearTxtCtrl();
+                BindData();
+                Dgv2BindData();
+                txtSn.Text = (seq + 1).ToString();
+                cbxCraft.Focus();
             }
         }
 
@@ -536,7 +533,7 @@ namespace LYH.WorkOrder
             txtDwgNo.ReadOnly = true;
             txtPageNo.ReadOnly = true;
         }
-        
+
         private void cbxCraft_Leave(object sender, EventArgs e)
         {
             txtProcessSn.Text = @"1";

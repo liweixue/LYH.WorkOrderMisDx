@@ -111,6 +111,7 @@ namespace LYH.WorkOrder
             if (btnAdd.Text == Resources.A新增)
             {
                 txtWONo.Text = "";
+                txtCraftSeq.Text = "";
                 txtPrtDwgNo.Text = "";
                 txtProcCardNo.Text = "";
                 txtWONo.Focus();
