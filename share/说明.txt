@@ -1,0 +1,24 @@
+1.DataValidator.cs 数据验证类，提供如是否是整型数等类似的验证
+2.DecryptEncrypt.cs 对称加密、解密字符串
+3.DBOperation.cs   提供数据库的操作，如创建连接串执行存储过程等
+4.ExcelOperations.cs Excel操作类
+5.ftp.cs ftp有关操作，支持断点续传
+6.常用编码操作：文件编码等
+7.js.cs 常用js代码
+8.文件操作类
+9.数据检查类
+10.util.cs常用字符串操作
+11.CacheManager.cs 操作缓存的类
+12.CookieManager.cs Cookie管理类
+13.DataToExcel.cs 导出excel
+14.EnumConvert 枚举转换为详细说明的类
+15.ImageManager 图像处理类
+16.IUploadFile 文件上传接口
+17.LBCUploadFile 文件上传类
+18.ListConvert Table转换类
+19.NetMail 发送邮件的类
+20.PasswordGenerator 产生随机码
+21.StringManager 字符串管理类
+22.UploadFile 提供上传文件时所使用的方法
+23.UploadFileManager 文件上传管理类
+24.ValidateCode 可以生成验证码图像的类，图像格式为gif

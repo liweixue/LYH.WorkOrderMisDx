@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9234978A-D602-4578-8E63-0F42A93069C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LYH.WorkOrder</RootNamespace>
+    <AssemblyName>LYH.WorkOrderMisDx</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Resources\start.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LYH.WorkOrder.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>.\Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.Framework.BaseUIDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\LYH.Framework.BaseUIDx.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.Framework.Commons, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\LYH.Framework.ControlUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\LYH.Pager.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.Pager.WinControlDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\LYH.Pager.WinControlDx.dll</HintPath>
+    </Reference>
+    <Reference Include="LYH.SecurityDx, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\LYH.SecurityDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="SimpleUpdater, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c532149a76b9a64b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\SimpleUpdater.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWinManage.cs" />
+    <Compile Include="cncCryst.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cncCryst.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DGVExcelExtend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FrmpRrocCardEntry1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrmpRrocCardEntry.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintRdlc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintRdlc.Designer.cs">
+      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrint.Designer.cs">
+      <DependentUpon>FrmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReflectionUtil.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RowMergeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RowMergeView.Designer.cs">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="share\DataToExcel.cs" />
+    <Compile Include="share\DBOperation.cs" />
+    <Compile Include="share\DecryptEncrypt.cs" />
+    <Compile Include="share\ExcelOperations.cs" />
+    <Compile Include="Logon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logon.designer.cs">
+      <DependentUpon>Logon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBimonthly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBimonthly.Designer.cs">
+      <DependentUpon>FrmBimonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConstructionGather.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConstructionGather.Designer.cs">
+      <DependentUpon>FrmConstructionGather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkOrderReceive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkOrderReceive.Designer.cs">
+      <DependentUpon>FrmWorkOrderReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcCardBom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcCardBom.Designer.cs">
+      <DependentUpon>FrmProcCardBom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCNCHandwriting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCNCHandwriting.Designer.cs">
+      <DependentUpon>FrmCNCHandwriting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcCard.Designer.cs">
+      <DependentUpon>FrmProcCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmpRrocCardEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmpRrocCardEntry.Designer.cs">
+      <DependentUpon>FrmpRrocCardEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCNCInstructionRpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCNCInstructionRpt.Designer.cs">
+      <DependentUpon>FrmCNCInstructionRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConstructionEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConstructionEntry.designer.cs">
+      <DependentUpon>FrmConstructionEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcCardUprice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcCardUprice.Designer.cs">
+      <DependentUpon>FrmProcCardUprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcess.Designer.cs">
+      <DependentUpon>FrmProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcCardTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcCardTeam.Designer.cs">
+      <DependentUpon>FrmProcCardTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkOrderProcUPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkOrderProcUPrice.Designer.cs">
+      <DependentUpon>FrmWorkOrderProcUPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUser.Designer.cs">
+      <DependentUpon>FrmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConstructionAduit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConstructionAduit.Designer.cs">
+      <DependentUpon>FrmConstructionAduit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmContructionHandwriting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmContructionHandwriting.Designer.cs">
+      <DependentUpon>FrmContructionHandwriting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConstructionRpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConstructionRpt.Designer.cs">
+      <DependentUpon>FrmConstructionRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPwd.Designer.cs">
+      <DependentUpon>FrmPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDataImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataImport.Designer.cs">
+      <DependentUpon>FrmDataImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="share\FtpClientService.cs" />
+    <Compile Include="share\JScript.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="share\SqlHelper.cs" />
+    <Compile Include="share\StringHelper.cs" />
+    <Compile Include="share\FileDirectoryUtility.cs" />
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cncCryst.resx">
+      <DependentUpon>cncCryst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cncCryst.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cncCryst.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintRdlc.resx">
+      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrint.resx">
+      <DependentUpon>FrmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkOrderProcUPrice.resx">
+      <DependentUpon>FrmWorkOrderProcUPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logon.resx">
+      <DependentUpon>Logon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBimonthly.resx">
+      <DependentUpon>FrmBimonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConstructionGather.resx">
+      <DependentUpon>FrmConstructionGather.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkOrderReceive.resx">
+      <DependentUpon>FrmWorkOrderReceive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcCardBom.resx">
+      <DependentUpon>FrmProcCardBom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCNCHandwriting.resx">
+      <DependentUpon>FrmCNCHandwriting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcCard.resx">
+      <DependentUpon>FrmProcCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmpRrocCardEntry.resx">
+      <DependentUpon>FrmpRrocCardEntry.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FrmpRrocCardEntry1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCNCInstructionRpt.resx">
+      <DependentUpon>FrmCNCInstructionRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConstructionEntry.resx">
+      <DependentUpon>FrmConstructionEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcCardUprice.resx">
+      <DependentUpon>FrmProcCardUprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcess.resx">
+      <DependentUpon>FrmProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcCardTeam.resx">
+      <DependentUpon>FrmProcCardTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUser.resx">
+      <DependentUpon>FrmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConstructionAduit.resx">
+      <DependentUpon>FrmConstructionAduit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmContructionHandwriting.resx">
+      <DependentUpon>FrmContructionHandwriting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConstructionRpt.resx">
+      <DependentUpon>FrmConstructionRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPwd.resx">
+      <DependentUpon>FrmPwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataImport.resx">
+      <DependentUpon>FrmDataImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="RowMergeView.resx">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="share\WordClass.cs" />
+    <Compile Include="ToExcel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\Aspose.Cells.dll" />
+    <Content Include="DLL\Interop.Excel.dll" />
+    <Content Include="DLL\Interop.Office.dll" />
+    <Content Include="DLL\LWX.SpellSearchBoxEx.dll" />
+    <Content Include="DLL\LYH.Framework.BaseUIDx.dll" />
+    <Content Include="DLL\LYH.Framework.BaseUIDx.pdb" />
+    <Content Include="DLL\LYH.Framework.Commons.dll" />
+    <Content Include="DLL\LYH.Framework.ControlUtil.dll" />
+    <Content Include="DLL\LYH.Pager.Entity.dll" />
+    <Content Include="DLL\LYH.Pager.WinControlDx.dll" />
+    <Content Include="DLL\LYH.SecurityDx.dll" />
+    <Content Include="DLL\SimpleUpdater.exe" />
+    <Content Include="ICO\dz2.ico" />
+    <Content Include="ICO\dzscb.ico" />
+    <Content Include="UpdateLog\版本更新记录.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\1.jpg" />
+    <Content Include="Resources\502750_new.jpg" />
+    <Content Include="Resources\53888c0def2e0.jpg" />
+    <Content Include="Resources\System.ico" />
+    <Content Include="share\说明.txt" />
+    <None Include="RegisterDEV-v14.1.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\start.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\247986.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MES\SpellSearchBoxEx\SpellSearchBoxEx.csproj">
+      <Project>{b2d00483-25d4-4144-a08b-481952be404c}</Project>
+      <Name>SpellSearchBoxEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
