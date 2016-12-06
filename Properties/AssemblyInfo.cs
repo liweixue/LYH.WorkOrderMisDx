@@ -5,11 +5,11 @@ using System.Resources;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("工单录入")]
+[assembly: AssemblyTitle("工单管理")]
 [assembly: AssemblyDescription("工单录入及加工工艺卡管理")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("佛山市南海德展钣金有限公司")]
-[assembly: AssemblyProduct("工单录入")]
+[assembly: AssemblyProduct("工单管理")]
 [assembly: AssemblyCopyright("Copyright © 德展钣金 2013-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,6 +32,6 @@ using System.Resources;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.4.0.5")]
-[assembly: AssemblyFileVersion("3.4.0.5")]
+[assembly: AssemblyVersion("3.4.2.1")]
+[assembly: AssemblyFileVersion("3.4.2.1")]
 [assembly: NeutralResourcesLanguageAttribute("")]

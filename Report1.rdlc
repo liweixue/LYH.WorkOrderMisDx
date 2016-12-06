@@ -1102,7 +1102,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CNC车间生产指令单</Value>
+                      <Value>CNC车间生产工艺卡</Value>
                       <Style>
                         <FontFamily>新宋体</FontFamily>
                         <FontSize>24pt</FontSize>
@@ -1577,7 +1577,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>指令单号</Value>
+                      <Value>工艺卡号</Value>
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -2251,7 +2251,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>E:\EMS\施工单录入系统\DataSet1.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\EMS\工单录入系统\DataSet1.xsd</rd:SchemaPath>
         <rd:TableName>cncwuden</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

@@ -17,7 +17,7 @@
 FROM      udstr AS a INNER JOIN
                 udone AS b ON b.sgdhao = a.sgdhao INNER JOIN
                 DZDJ.dbo.TB_Dept AS c ON c.ID = b.DeptId
-ORDER BY a.gxone,a.gxtwo</CommandText>
+ORDER BY a.gxone, a.gxtwo</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

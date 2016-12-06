@@ -1438,7 +1438,7 @@ namespace LYH.WorkOrder.DataSet1TableAdapters {
 FROM      udstr AS a INNER JOIN
                 udone AS b ON b.sgdhao = a.sgdhao INNER JOIN
                 DZDJ.dbo.TB_Dept AS c ON c.ID = b.DeptId
-ORDER BY a.gxone,a.gxtwo";
+ORDER BY a.gxone, a.gxtwo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

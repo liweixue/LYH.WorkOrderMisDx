@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProcCardEntry));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtProcCardNo = new System.Windows.Forms.TextBox();
+            this.txtSeq = new System.Windows.Forms.TextBox();
+            this.txtProcessSeq = new System.Windows.Forms.TextBox();
+            this.txtProcessQty = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,52 +59,52 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.cbno1 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbxTeam = new SpellSearchBoxEx.SpellSearchBoxEx();
+            this.cbxProcesser = new SpellSearchBoxEx.SpellSearchBoxEx();
+            this.cbxAdjust = new SpellSearchBoxEx.SpellSearchBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtProcCardNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(116, 21);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtProcCardNo.Location = new System.Drawing.Point(79, 5);
+            this.txtProcCardNo.Name = "txtProcCardNo";
+            this.txtProcCardNo.Size = new System.Drawing.Size(116, 21);
+            this.txtProcCardNo.TabIndex = 0;
+            this.txtProcCardNo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txtSeq
             // 
-            this.textBox2.Location = new System.Drawing.Point(79, 25);
-            this.textBox2.MaxLength = 1;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(116, 21);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
+            this.txtSeq.Location = new System.Drawing.Point(79, 25);
+            this.txtSeq.MaxLength = 1;
+            this.txtSeq.Name = "txtSeq";
+            this.txtSeq.Size = new System.Drawing.Size(116, 21);
+            this.txtSeq.TabIndex = 1;
+            this.txtSeq.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtSeq.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
-            // textBox3
+            // txtProcessSeq
             // 
-            this.textBox3.Location = new System.Drawing.Point(79, 45);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 21);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
+            this.txtProcessSeq.Location = new System.Drawing.Point(79, 45);
+            this.txtProcessSeq.Name = "txtProcessSeq";
+            this.txtProcessSeq.Size = new System.Drawing.Size(116, 21);
+            this.txtProcessSeq.TabIndex = 2;
+            this.txtProcessSeq.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtProcessSeq.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
             // 
-            // textBox4
+            // txtProcessQty
             // 
-            this.textBox4.Location = new System.Drawing.Point(79, 65);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(116, 21);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
+            this.txtProcessQty.Location = new System.Drawing.Point(79, 65);
+            this.txtProcessQty.Name = "txtProcessQty";
+            this.txtProcessQty.Size = new System.Drawing.Size(116, 21);
+            this.txtProcessQty.TabIndex = 3;
+            this.txtProcessQty.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.txtProcessQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
             // 
             // label1
             // 
@@ -161,7 +161,7 @@
             this.button1.Location = new System.Drawing.Point(201, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 25);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 8;
             this.button1.Text = "&S保存";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -171,7 +171,7 @@
             this.button2.Location = new System.Drawing.Point(201, 39);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 25);
-            this.button2.TabIndex = 11;
+            this.button2.TabIndex = 9;
             this.button2.Text = "&X修改";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -181,7 +181,7 @@
             this.button3.Location = new System.Drawing.Point(201, 69);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 25);
-            this.button3.TabIndex = 12;
+            this.button3.TabIndex = 10;
             this.button3.Text = "&D删除";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -191,7 +191,7 @@
             this.button4.Location = new System.Drawing.Point(201, 99);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 25);
-            this.button4.TabIndex = 13;
+            this.button4.TabIndex = 11;
             this.button4.Text = "&W完成";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -263,7 +263,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(79, 142);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(116, 21);
-            this.dateTimePicker1.TabIndex = 17;
+            this.dateTimePicker1.TabIndex = 7;
             // 
             // textBox6
             // 
@@ -353,37 +353,8 @@
             this.label12.TabIndex = 33;
             this.label12.Text = "调机员";
             // 
-            // cbno1
-            // 
-            this.cbno1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbno1.FormattingEnabled = true;
-            this.cbno1.Location = new System.Drawing.Point(79, 85);
-            this.cbno1.Name = "cbno1";
-            this.cbno1.Size = new System.Drawing.Size(116, 20);
-            this.cbno1.TabIndex = 34;
-            this.cbno1.SelectedIndexChanged += new System.EventHandler(this.cbno1_SelectedIndexChanged);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 104);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(116, 20);
-            this.comboBox1.TabIndex = 35;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(79, 123);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(116, 20);
-            this.comboBox2.TabIndex = 36;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -393,9 +364,9 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.cbno1);
+            this.panel2.Controls.Add(this.cbxTeam);
+            this.panel2.Controls.Add(this.cbxProcesser);
+            this.panel2.Controls.Add(this.cbxAdjust);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
@@ -413,18 +384,53 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtProcessQty);
+            this.panel2.Controls.Add(this.txtProcessSeq);
+            this.panel2.Controls.Add(this.txtSeq);
+            this.panel2.Controls.Add(this.txtProcCardNo);
             this.panel2.Controls.Add(this.textBox9);
             this.panel2.Controls.Add(this.textBox8);
             this.panel2.Controls.Add(this.textBox7);
             this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(442, 178);
             this.panel2.TabIndex = 37;
+            // 
+            // cbxTeam
+            // 
+            this.cbxTeam.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxTeam.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbxTeam.Location = new System.Drawing.Point(79, 85);
+            this.cbxTeam.MaxItemCount = 10;
+            this.cbxTeam.Name = "cbxTeam";
+            this.cbxTeam.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
+            this.cbxTeam.Size = new System.Drawing.Size(116, 21);
+            this.cbxTeam.SpellSearchSource = null;
+            this.cbxTeam.TabIndex = 4;
+            // 
+            // cbxProcesser
+            // 
+            this.cbxProcesser.Location = new System.Drawing.Point(79, 123);
+            this.cbxProcesser.MaxItemCount = 10;
+            this.cbxProcesser.Name = "cbxProcesser";
+            this.cbxProcesser.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
+            this.cbxProcesser.Size = new System.Drawing.Size(116, 21);
+            this.cbxProcesser.SpellSearchSource = null;
+            this.cbxProcesser.TabIndex = 6;
+            // 
+            // cbxAdjust
+            // 
+            this.cbxAdjust.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxAdjust.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbxAdjust.Location = new System.Drawing.Point(79, 104);
+            this.cbxAdjust.MaxItemCount = 10;
+            this.cbxAdjust.Name = "cbxAdjust";
+            this.cbxAdjust.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
+            this.cbxAdjust.Size = new System.Drawing.Size(116, 21);
+            this.cbxAdjust.SpellSearchSource = null;
+            this.cbxAdjust.TabIndex = 5;
+            this.cbxAdjust.Enter += new System.EventHandler(this.cbxAdjust_Enter);
             // 
             // FrmProcCardEntry
             // 
@@ -432,6 +438,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(847, 505);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -451,10 +458,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtProcCardNo;
+        private System.Windows.Forms.TextBox txtSeq;
+        private System.Windows.Forms.TextBox txtProcessSeq;
+        private System.Windows.Forms.TextBox txtProcessQty;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -478,9 +485,9 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cbno1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private SpellSearchBoxEx.SpellSearchBoxEx cbxTeam;
+        private SpellSearchBoxEx.SpellSearchBoxEx cbxAdjust;
+        private SpellSearchBoxEx.SpellSearchBoxEx cbxProcesser;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
     }

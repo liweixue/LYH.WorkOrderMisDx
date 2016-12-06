@@ -553,7 +553,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 14);
             this.label2.TabIndex = 31;
-            this.label2.Text = "施工单查询";
+            this.label2.Text = "工单查询";
             // 
             // label14
             // 

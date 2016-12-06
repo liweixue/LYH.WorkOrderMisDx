@@ -62,13 +62,11 @@ namespace LYH.WorkOrder
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtCraftSeq = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpd = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnFinish = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.btnIns = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbxCraft = new SpellSearchBoxEx.SpellSearchBoxEx();
@@ -90,6 +88,8 @@ namespace LYH.WorkOrder
             this.label5 = new System.Windows.Forms.Label();
             this.txtAdjustingTime = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnFinish = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -103,7 +103,7 @@ namespace LYH.WorkOrder
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(212, 13);
+            this.label1.Location = new System.Drawing.Point(130, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 14);
             this.label1.TabIndex = 0;
@@ -113,7 +113,7 @@ namespace LYH.WorkOrder
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(381, 13);
+            this.label2.Location = new System.Drawing.Point(352, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 14);
             this.label2.TabIndex = 1;
@@ -140,16 +140,16 @@ namespace LYH.WorkOrder
             // 
             // txtDwgNo
             // 
-            this.txtDwgNo.Location = new System.Drawing.Point(252, 10);
+            this.txtDwgNo.Location = new System.Drawing.Point(170, 10);
             this.txtDwgNo.Name = "txtDwgNo";
-            this.txtDwgNo.Size = new System.Drawing.Size(124, 21);
+            this.txtDwgNo.Size = new System.Drawing.Size(177, 21);
             this.txtDwgNo.TabIndex = 2;
             // 
             // txtPageNo
             // 
-            this.txtPageNo.Location = new System.Drawing.Point(421, 10);
+            this.txtPageNo.Location = new System.Drawing.Point(392, 10);
             this.txtPageNo.Name = "txtPageNo";
-            this.txtPageNo.Size = new System.Drawing.Size(101, 21);
+            this.txtPageNo.Size = new System.Drawing.Size(127, 21);
             this.txtPageNo.TabIndex = 3;
             // 
             // groupBox1
@@ -279,9 +279,9 @@ namespace LYH.WorkOrder
             this.label12.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label12.Location = new System.Drawing.Point(5, 48);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 14);
+            this.label12.Size = new System.Drawing.Size(49, 14);
             this.label12.TabIndex = 25;
-            this.label12.Text = "客户";
+            this.label12.Text = "客  户";
             // 
             // label13
             // 
@@ -307,7 +307,7 @@ namespace LYH.WorkOrder
             // 
             this.txtCust.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtCust.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtCust.Location = new System.Drawing.Point(60, 44);
+            this.txtCust.Location = new System.Drawing.Point(59, 45);
             this.txtCust.Name = "txtCust";
             this.txtCust.Size = new System.Drawing.Size(66, 21);
             this.txtCust.TabIndex = 4;
@@ -362,8 +362,6 @@ namespace LYH.WorkOrder
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtCraftSeq);
-            this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.txtMaterial);
             this.panel2.Controls.Add(this.txtPartName);
             this.panel2.Controls.Add(this.txtCust);
@@ -377,33 +375,14 @@ namespace LYH.WorkOrder
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(7, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(594, 74);
+            this.panel2.Size = new System.Drawing.Size(604, 74);
             this.panel2.TabIndex = 0;
-            // 
-            // txtCraftSeq
-            // 
-            this.txtCraftSeq.Location = new System.Drawing.Point(170, 10);
-            this.txtCraftSeq.MaxLength = 7;
-            this.txtCraftSeq.Name = "txtCraftSeq";
-            this.txtCraftSeq.Size = new System.Drawing.Size(37, 21);
-            this.txtCraftSeq.TabIndex = 1;
-            this.txtCraftSeq.TextChanged += new System.EventHandler(this.txtCraftSeq_TextChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(130, 13);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 14);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "序号";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(120, 17);
+            this.btnAdd.Location = new System.Drawing.Point(88, 17);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(61, 28);
             this.btnAdd.TabIndex = 24;
@@ -413,7 +392,7 @@ namespace LYH.WorkOrder
             // 
             // btnUpd
             // 
-            this.btnUpd.Location = new System.Drawing.Point(221, 17);
+            this.btnUpd.Location = new System.Drawing.Point(157, 17);
             this.btnUpd.Name = "btnUpd";
             this.btnUpd.Size = new System.Drawing.Size(61, 28);
             this.btnUpd.TabIndex = 25;
@@ -423,7 +402,7 @@ namespace LYH.WorkOrder
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(322, 17);
+            this.btnDel.Location = new System.Drawing.Point(226, 17);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(61, 28);
             this.btnDel.TabIndex = 29;
@@ -433,7 +412,7 @@ namespace LYH.WorkOrder
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(423, 17);
+            this.btnCancel.Location = new System.Drawing.Point(455, 17);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(61, 28);
             this.btnCancel.TabIndex = 30;
@@ -441,15 +420,15 @@ namespace LYH.WorkOrder
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnFinish
+            // btnNext
             // 
-            this.btnFinish.Location = new System.Drawing.Point(524, 17);
-            this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(61, 28);
-            this.btnFinish.TabIndex = 31;
-            this.btnFinish.Text = "&W完成";
-            this.btnFinish.UseVisualStyleBackColor = true;
-            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
+            this.btnNext.Location = new System.Drawing.Point(524, 17);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(61, 28);
+            this.btnNext.TabIndex = 31;
+            this.btnNext.Text = "&N下一单";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnIns
             // 
@@ -483,19 +462,17 @@ namespace LYH.WorkOrder
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtAdjustingTime);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 51);
+            this.panel1.Location = new System.Drawing.Point(7, 131);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(594, 117);
             this.panel1.TabIndex = 0;
-            this.panel1.Visible = false;
             // 
             // cbxCraft
             // 
             this.cbxCraft.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxCraft.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbxCraft.Location = new System.Drawing.Point(248, 17);
-            this.cbxCraft.MaxItemCount = 5;
+            this.cbxCraft.MaxItemCount = 10;
             this.cbxCraft.Name = "cbxCraft";
             this.cbxCraft.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
             this.cbxCraft.Size = new System.Drawing.Size(91, 21);
@@ -660,19 +637,41 @@ namespace LYH.WorkOrder
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Controls.Add(this.btnIns);
+            this.groupBox3.Controls.Add(this.btnPrint);
             this.groupBox3.Controls.Add(this.btnFinish);
+            this.groupBox3.Controls.Add(this.btnIns);
+            this.groupBox3.Controls.Add(this.btnNext);
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.btnDel);
             this.groupBox3.Controls.Add(this.btnUpd);
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Location = new System.Drawing.Point(1, 80);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(600, 171);
+            this.groupBox3.Size = new System.Drawing.Size(600, 50);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单项明细";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(380, 18);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(48, 27);
+            this.btnPrint.TabIndex = 34;
+            this.btnPrint.Text = "&P打印";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnFinish
+            // 
+            this.btnFinish.AutoSize = true;
+            this.btnFinish.Location = new System.Drawing.Point(293, 17);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Size = new System.Drawing.Size(81, 28);
+            this.btnFinish.TabIndex = 33;
+            this.btnFinish.Text = "&F生成工艺卡";
+            this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // FrmProcCardBom
             // 
@@ -681,6 +680,7 @@ namespace LYH.WorkOrder
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1070, 590);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -699,6 +699,7 @@ namespace LYH.WorkOrder
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -727,13 +728,11 @@ namespace LYH.WorkOrder
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtCraftSeq;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpd;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnFinish;
+        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnIns;
         private System.Windows.Forms.Panel panel1;
         private SpellSearchBoxEx.SpellSearchBoxEx cbxCraft;
@@ -755,5 +754,7 @@ namespace LYH.WorkOrder
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAdjustingTime;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnFinish;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

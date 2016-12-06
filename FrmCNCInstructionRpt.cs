@@ -73,7 +73,7 @@ namespace LYH.WorkOrder
             {
                 wheres.Add($" wsbanz like '%{textBox7.Text.Trim()}%'");
             }
-            var sql = "SELECT zling as '指令单号',sgdhao as '工单号',ddhao as '生产单号',kehu as '客户',"+
+            var sql = "SELECT zling as '工艺卡号',sgdhao as '工单号',ddhao as '生产单号',kehu as '客户',"+
                 "jhqi as '订单交期',tuhao as '产品图号', name as '产品名称',yema as '页码', cailiao as '材料',"+
                 "suliang as '订单数量',gxone as '序号',gxname as '工序名称',gxtwo as '加工工序',tiao as '调机时间',"+
                 "danjian as '单件加工',xuj as '序价',buzu as '补助',wssulia as '完成数量',hujii as '件资合计',"+
@@ -131,7 +131,7 @@ namespace LYH.WorkOrder
         {
             if (textBox3.Text.Length == 7)
             {
-                var sql = "SELECT zling as '指令单号',sgdhao as  '工单号',ddhao as '生产单号',kehu as '客户'," +
+                var sql = "SELECT zling as '工艺卡号',sgdhao as  '工单号',ddhao as '生产单号',kehu as '客户'," +
                           "jhqi as '订单交期',tuhao as '产品图号', name as '产品名称',yema as '页码', cailiao as '材料'," +
                           "suliang as '订单数量',gxone as '序号',gxname as '工序名称',gxtwo as '加工工序',tiao as '调机时间'," +
                           "danjian as '单件加工',xuj as '序价',buzu as '补助',wssulia as '完成数量',hujii as '件资合计', " +
@@ -175,7 +175,7 @@ namespace LYH.WorkOrder
         {
             if (textBox3.Text.Length == 4)
             {
-                var sql = "SELECT zling as '指令单号',sgdhao as '工单号',ddhao as '生产单号',kehu as '客户'," +
+                var sql = "SELECT zling as '工艺卡号',sgdhao as '工单号',ddhao as '生产单号',kehu as '客户'," +
                           "jhqi as '订单交期',tuhao as '产品图号', name as '产品名称',yema as '页码', cailiao as '材料'," +
                           "suliang as '订单数量',gxone as '序号',gxname as '工序名称',gxtwo as '加工工序',tiao as '调机时间'," +
                           "danjian as '单件加工',xuj as '序价',buzu as '补助',wssulia as '完成数量',hujii as '件资合计'," +

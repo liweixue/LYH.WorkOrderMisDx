@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.录入管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.施工单录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.手工施工单制作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.p15施工单更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.跨月施工单录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工单录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.手工工单制作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.p15工单更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.跨月工单录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.序价管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.录入审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.施工单查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工单查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cNCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.班组员工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.施工单接收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工单接收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bOM管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.指令单管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.指令单录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工艺卡管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工艺卡录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cNC报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.密码修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.h帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,7 @@
             this.重新登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@
             this.序价管理ToolStripMenuItem,
             this.录入审核ToolStripMenuItem,
             this.报表ToolStripMenuItem,
-            this.施工单查询ToolStripMenuItem,
+            this.工单查询ToolStripMenuItem,
             this.cNCToolStripMenuItem,
             this.密码修改ToolStripMenuItem,
             this.h帮助ToolStripMenuItem,
@@ -77,45 +79,45 @@
             // 录入管理ToolStripMenuItem
             // 
             this.录入管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.施工单录入ToolStripMenuItem,
-            this.手工施工单制作ToolStripMenuItem,
-            this.p15施工单更新ToolStripMenuItem,
-            this.跨月施工单录入ToolStripMenuItem});
+            this.工单录入ToolStripMenuItem,
+            this.手工工单制作ToolStripMenuItem,
+            this.p15工单更新ToolStripMenuItem,
+            this.跨月工单录入ToolStripMenuItem});
             this.录入管理ToolStripMenuItem.Name = "录入管理ToolStripMenuItem";
             this.录入管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.录入管理ToolStripMenuItem.Text = "录入管理";
             // 
-            // 施工单录入ToolStripMenuItem
+            // 工单录入ToolStripMenuItem
             // 
-            this.施工单录入ToolStripMenuItem.Name = "施工单录入ToolStripMenuItem";
-            this.施工单录入ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.施工单录入ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.施工单录入ToolStripMenuItem.Text = "施工单录入";
-            this.施工单录入ToolStripMenuItem.Click += new System.EventHandler(this.施工单录入ToolStripMenuItem_Click);
+            this.工单录入ToolStripMenuItem.Name = "工单录入ToolStripMenuItem";
+            this.工单录入ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.工单录入ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.工单录入ToolStripMenuItem.Text = "工单录入";
+            this.工单录入ToolStripMenuItem.Click += new System.EventHandler(this.工单录入ToolStripMenuItem_Click);
             // 
-            // 手工施工单制作ToolStripMenuItem
+            // 手工工单制作ToolStripMenuItem
             // 
-            this.手工施工单制作ToolStripMenuItem.Name = "手工施工单制作ToolStripMenuItem";
-            this.手工施工单制作ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.手工施工单制作ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.手工施工单制作ToolStripMenuItem.Text = "手写施工单录入";
-            this.手工施工单制作ToolStripMenuItem.Click += new System.EventHandler(this.手工施工单制作ToolStripMenuItem_Click);
+            this.手工工单制作ToolStripMenuItem.Name = "手工工单制作ToolStripMenuItem";
+            this.手工工单制作ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.手工工单制作ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.手工工单制作ToolStripMenuItem.Text = "手写工单录入";
+            this.手工工单制作ToolStripMenuItem.Click += new System.EventHandler(this.手工工单制作ToolStripMenuItem_Click);
             // 
-            // p15施工单更新ToolStripMenuItem
+            // p15工单更新ToolStripMenuItem
             // 
-            this.p15施工单更新ToolStripMenuItem.Name = "p15施工单更新ToolStripMenuItem";
-            this.p15施工单更新ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.p15施工单更新ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.p15施工单更新ToolStripMenuItem.Text = "C15施工单更新";
-            this.p15施工单更新ToolStripMenuItem.Click += new System.EventHandler(this.p15施工单更新ToolStripMenuItem_Click);
+            this.p15工单更新ToolStripMenuItem.Name = "p15工单更新ToolStripMenuItem";
+            this.p15工单更新ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.p15工单更新ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.p15工单更新ToolStripMenuItem.Text = "C15工单更新";
+            this.p15工单更新ToolStripMenuItem.Click += new System.EventHandler(this.p15工单更新ToolStripMenuItem_Click);
             // 
-            // 跨月施工单录入ToolStripMenuItem
+            // 跨月工单录入ToolStripMenuItem
             // 
-            this.跨月施工单录入ToolStripMenuItem.Name = "跨月施工单录入ToolStripMenuItem";
-            this.跨月施工单录入ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.跨月施工单录入ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.跨月施工单录入ToolStripMenuItem.Text = "跨月施工单录入";
-            this.跨月施工单录入ToolStripMenuItem.Click += new System.EventHandler(this.跨月施工单录入ToolStripMenuItem_Click);
+            this.跨月工单录入ToolStripMenuItem.Name = "跨月工单录入ToolStripMenuItem";
+            this.跨月工单录入ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.跨月工单录入ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.跨月工单录入ToolStripMenuItem.Text = "跨月工单录入";
+            this.跨月工单录入ToolStripMenuItem.Click += new System.EventHandler(this.跨月工单录入ToolStripMenuItem_Click);
             // 
             // 序价管理ToolStripMenuItem
             // 
@@ -141,23 +143,23 @@
             this.报表ToolStripMenuItem.Text = "工单报表(F4)";
             this.报表ToolStripMenuItem.Click += new System.EventHandler(this.报表ToolStripMenuItem_Click);
             // 
-            // 施工单查询ToolStripMenuItem
+            // 工单查询ToolStripMenuItem
             // 
-            this.施工单查询ToolStripMenuItem.Name = "施工单查询ToolStripMenuItem";
-            this.施工单查询ToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.施工单查询ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.施工单查询ToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
-            this.施工单查询ToolStripMenuItem.Text = "工单查询(F3)";
-            this.施工单查询ToolStripMenuItem.Click += new System.EventHandler(this.施工单查询ToolStripMenuItem_Click);
+            this.工单查询ToolStripMenuItem.Name = "工单查询ToolStripMenuItem";
+            this.工单查询ToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.工单查询ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.工单查询ToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
+            this.工单查询ToolStripMenuItem.Text = "工单查询(F3)";
+            this.工单查询ToolStripMenuItem.Click += new System.EventHandler(this.工单查询ToolStripMenuItem_Click);
             // 
             // cNCToolStripMenuItem
             // 
             this.cNCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.班组员工管理ToolStripMenuItem,
-            this.施工单接收ToolStripMenuItem,
+            this.工单接收ToolStripMenuItem,
             this.bOM管理ToolStripMenuItem,
-            this.指令单管理ToolStripMenuItem,
-            this.指令单录入ToolStripMenuItem,
+            this.工艺卡管理ToolStripMenuItem,
+            this.工艺卡录入ToolStripMenuItem,
             this.cNC报表ToolStripMenuItem});
             this.cNCToolStripMenuItem.Name = "cNCToolStripMenuItem";
             this.cNCToolStripMenuItem.ShortcutKeyDisplayString = "";
@@ -167,42 +169,42 @@
             // 班组员工管理ToolStripMenuItem
             // 
             this.班组员工管理ToolStripMenuItem.Name = "班组员工管理ToolStripMenuItem";
-            this.班组员工管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.班组员工管理ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.班组员工管理ToolStripMenuItem.Text = "(&1)员工管理";
             this.班组员工管理ToolStripMenuItem.Click += new System.EventHandler(this.班组员工管理ToolStripMenuItem_Click);
             // 
-            // 施工单接收ToolStripMenuItem
+            // 工单接收ToolStripMenuItem
             // 
-            this.施工单接收ToolStripMenuItem.Name = "施工单接收ToolStripMenuItem";
-            this.施工单接收ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.施工单接收ToolStripMenuItem.Text = "(&2)工单接收";
-            this.施工单接收ToolStripMenuItem.Click += new System.EventHandler(this.施工单接收ToolStripMenuItem_Click);
+            this.工单接收ToolStripMenuItem.Name = "工单接收ToolStripMenuItem";
+            this.工单接收ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.工单接收ToolStripMenuItem.Text = "(&2)工单接收";
+            this.工单接收ToolStripMenuItem.Click += new System.EventHandler(this.工单接收ToolStripMenuItem_Click);
             // 
             // bOM管理ToolStripMenuItem
             // 
             this.bOM管理ToolStripMenuItem.Name = "bOM管理ToolStripMenuItem";
-            this.bOM管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bOM管理ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.bOM管理ToolStripMenuItem.Text = "(&3)分解工艺";
             this.bOM管理ToolStripMenuItem.Click += new System.EventHandler(this.bOM管理ToolStripMenuItem_Click);
             // 
-            // 指令单管理ToolStripMenuItem
+            // 工艺卡管理ToolStripMenuItem
             // 
-            this.指令单管理ToolStripMenuItem.Name = "指令单管理ToolStripMenuItem";
-            this.指令单管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.指令单管理ToolStripMenuItem.Text = "(&4)生成及打印";
-            this.指令单管理ToolStripMenuItem.Click += new System.EventHandler(this.指令单管理ToolStripMenuItem_Click);
+            this.工艺卡管理ToolStripMenuItem.Name = "工艺卡管理ToolStripMenuItem";
+            this.工艺卡管理ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.工艺卡管理ToolStripMenuItem.Text = "(&4)生成及打印";
+            this.工艺卡管理ToolStripMenuItem.Click += new System.EventHandler(this.工艺卡管理ToolStripMenuItem_Click);
             // 
-            // 指令单录入ToolStripMenuItem
+            // 工艺卡录入ToolStripMenuItem
             // 
-            this.指令单录入ToolStripMenuItem.Name = "指令单录入ToolStripMenuItem";
-            this.指令单录入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.指令单录入ToolStripMenuItem.Text = "(&5)工艺卡录入";
-            this.指令单录入ToolStripMenuItem.Click += new System.EventHandler(this.指令单录入ToolStripMenuItem_Click);
+            this.工艺卡录入ToolStripMenuItem.Name = "工艺卡录入ToolStripMenuItem";
+            this.工艺卡录入ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.工艺卡录入ToolStripMenuItem.Text = "(&5)工艺卡录入";
+            this.工艺卡录入ToolStripMenuItem.Click += new System.EventHandler(this.工艺卡录入ToolStripMenuItem_Click);
             // 
             // cNC报表ToolStripMenuItem
             // 
             this.cNC报表ToolStripMenuItem.Name = "cNC报表ToolStripMenuItem";
-            this.cNC报表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cNC报表ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cNC报表ToolStripMenuItem.Text = "(&6)报表";
             this.cNC报表ToolStripMenuItem.Click += new System.EventHandler(this.cNC报表ToolStripMenuItem_Click);
             // 
@@ -253,6 +255,11 @@
             this.tssl.Size = new System.Drawing.Size(44, 17);
             this.tssl.Text = "状态栏";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -286,27 +293,28 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 录入管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 施工单录入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工单录入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 序价管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 录入审核ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 手工施工单制作ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 手工工单制作ToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem 密码修改ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tssl;
-        private System.Windows.Forms.ToolStripMenuItem p15施工单更新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 跨月施工单录入ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 施工单查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem p15工单更新ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 跨月工单录入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工单查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cNCToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 施工单接收ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工单接收ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bOM管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 指令单管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 指令单录入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工艺卡管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工艺卡录入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cNC报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 班组员工管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem h帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem G关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重新登录ToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

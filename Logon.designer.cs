@@ -109,7 +109,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(293, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "生产部施工单录入系统";
+            this.label3.Text = "生产部工单录入系统";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Logon

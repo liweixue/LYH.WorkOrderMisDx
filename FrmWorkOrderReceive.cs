@@ -29,6 +29,11 @@ namespace LYH.WorkOrder
             BindDataDgv3();
         }
 
+        private void FrmWorkOrderReceive_Load(object sender, EventArgs e)
+        {
+            txtWONo.Focus();
+        }
+
         private void FrmWin_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -93,7 +98,7 @@ namespace LYH.WorkOrder
             var sql = "SELECT IDL '序',sgdhao '工单号',ddhao '生产单号',kehu '客户'," +
                       "jhqi '交货期',tuhao '图号',name '名称',yema '页码',cailiao '材料',sulia '数量'," +
                       "wsoo '已完成',xuhao '工序号',gyname '工序名称',jhwxri '计划完成',jiesou '接收日期' " +
-                      $"FROM udone WHERE beistr='{abbc}' AND sgdhao='{txtWONo.Text.Trim()}'";
+                      $"FROM udone WHERE beistr='{abbc}' AND DeptId='{SqlHelper.DeptId}'  ORDER BY jiesou DESC";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dataGridView2.DataSource = ds.Tables[0];
             dataGridView2.Columns[0].Width = 0;
@@ -111,7 +116,6 @@ namespace LYH.WorkOrder
             dataGridView2.Columns[12].Width = 90;
             dataGridView2.Columns[13].Width = 90;
             dataGridView2.Columns[14].Width = 90;
-            dataGridView2.Sort(dataGridView2.Columns[0], ListSortDirection.Ascending);
         }
 
         private void BindDataDgv3()
@@ -120,7 +124,7 @@ namespace LYH.WorkOrder
             var sql = "SELECT IDL '序',sgdhao '工单号',ddhao '生产单号',kehu '客户'," +
                       "jhqi '交货期',tuhao '图号',name '名称',yema '页码',cailiao '材料',sulia '数量'," +
                       "xuhao '工序号',gyname '工序名称',jhwxri '计划完成',jiesou '接收日期'FROM udone " +
-                      $"WHERE beistr='{abbc}'";
+                      $"WHERE beistr='{abbc}' ORDER BY jiesou DESC";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dataGridView3.DataSource = ds.Tables[0];
             dataGridView3.Columns[0].Width = 0;
@@ -137,7 +141,6 @@ namespace LYH.WorkOrder
             dataGridView3.Columns[11].Width = 90;
             dataGridView3.Columns[12].Width = 90;
             dataGridView3.Columns[13].Width = 90;
-            dataGridView3.Sort(dataGridView3.Columns[0], ListSortDirection.Ascending);
         }
 
         private void txtCraftSeq_TextChanged(object sender, EventArgs e)
@@ -176,36 +179,43 @@ namespace LYH.WorkOrder
                 txtCraftSeq.Text = "";
                 txtCraftSeq.Focus();
                 dr.Close();
+                return;
+            }
+            sql =
+                $"SELECT TOP 1 * FROM tf_sgdan WHERE shigongdanhao='{txtWONo.Text.Trim()}'AND xuhao='{txtCraftSeq.Text.Trim()} '";
+            dr.Close();
+            dr = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
+            if (dr.HasRows)
+            {
+                dr.Read();
+                _sn = dr["xuhao"].ToString().Trim();
+                _processName = dr["gongxumingcheng"].ToString().Trim();
+                _planDate = dr["jihuariqi"].ToString().Trim();
+                dr.Close();
+                const string adb12 = "未完成";
+                var sqltk = "insert into udone(DeptId,sgdhao,ddhao,kehu,jhqi,tuhao,name,yema,cailiao,xuhao," +
+                            $"gyname,jhwxri,sulia,beistr) values('{SqlHelper.DeptId}','{txtWONo.Text.Trim().ToUpper()}','{_orderNo}','{_cust}','{_deliveryDate}','{_prtDwgNo}','{_prtName}','{_pageNum}','{_material}','{_sn}'," +
+                            $"'{_processName}','{_planDate}','{_orderQuantity}','{adb12}')";
+                SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sqltk);
+                BindDataDgv2();
+                BindDataDgv3();
+                txtWONo.Text = "";
+                txtCraftSeq.Text = "";
+                ActiveFrmProcCardBom();
             }
             else
             {
-                sql =
-                    $"SELECT TOP 1 * FROM tf_sgdan WHERE shigongdanhao='{txtWONo.Text.Trim()}'AND xuhao='{txtCraftSeq.Text.Trim()} '";
+                MessageBox.Show($"此工序号{txtCraftSeq.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
+                txtCraftSeq.Text = "";
+                txtCraftSeq.Focus();
                 dr.Close();
-                dr = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
-                if (dr.HasRows)
-                {
-                    dr.Read();
-                    _sn = dr["xuhao"].ToString().Trim();
-                    _processName = dr["gongxumingcheng"].ToString().Trim();
-                    _planDate = dr["jihuariqi"].ToString().Trim();
-                    dr.Close();
-                    const string adb12 = "未完成";
-                    var sqltk = "insert into udone(DeptId,sgdhao,ddhao,kehu,jhqi,tuhao,name,yema,cailiao,xuhao," +
-                                $"gyname,jhwxri,sulia,beistr) values('{SqlHelper.DeptId}','{txtWONo.Text.Trim().ToUpper()}','{_orderNo}','{_cust}','{_deliveryDate}','{_prtDwgNo}','{_prtName}','{_pageNum}','{_material}','{_sn}'," +
-                                $"'{_processName}','{_planDate}','{_orderQuantity}','{adb12}')";
-                    SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sqltk);
-                    BindDataDgv2();
-                    BindDataDgv3();
-                }
-                else
-                {
-                    MessageBox.Show($"此工序号{txtCraftSeq.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
-                    txtCraftSeq.Text = "";
-                    txtCraftSeq.Focus();
-                    dr.Close();
-                }
             }
+        }
+
+        private void ActiveFrmProcCardBom()
+        {
+            var frmProcCardBom = (FrmProcCardBom) ChildWinManage.LoadMdiForm(this.MdiParent, typeof(FrmProcCardBom));
+            frmProcCardBom.InitProcCard(txtWONo.Text.Trim());
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -241,13 +251,13 @@ namespace LYH.WorkOrder
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (btnClose.Text == Resources.C退出)
+            if (btnRedirect.Text == Resources.C退出)
             {
                 Close();
             }
             else
             {
-                btnClose.Text = Resources.C退出;
+                btnRedirect.Text = Resources.C退出;
                 btnUpd.Text = Resources.X修改;
                 btnReceiveConfirm.Visible = true;
                 btnDel.Visible = true;
@@ -256,14 +266,14 @@ namespace LYH.WorkOrder
                 groupBox1.Visible = true;
                 txtWONo.ReadOnly = false;
                 txtCraftSeq.ReadOnly = false;
-                textBox4.Text = "";
-                textBox5.Text = "";
-                textBox6.Text = "";
-                textBox7.Text = "";
-                textBox8.Text = "";
-                textBox9.Text = "";
-                textBox10.Text = "";
-                textBox3.Text = "";
+                txtPONo.Text = "";
+                txtCust.Text = "";
+                txtDwgNo.Text = "";
+                txtPrtName.Text = "";
+                txtPageNo.Text = "";
+                txtMaterial.Text = "";
+                txtQty.Text = "";
+                txtWONo2.Text = "";
                 BindDataDgv2();
             }
         }
@@ -276,14 +286,14 @@ namespace LYH.WorkOrder
 
         private void btnUpd_Click(object sender, EventArgs e)
         {
-            if (textBox3.Text == "")
+            if (txtWONo2.Text == "")
             {
                 MessageBox.Show("请先选择行后在进行修改!!", Resources.T提示);
             }
             else if (btnUpd.Text == Resources.X修改)
             {
                 btnUpd.Text = Resources.X保存;
-                btnClose.Text = Resources.C取消;
+                btnRedirect.Text = Resources.C取消;
                 btnReceiveConfirm.Visible = false;
                 btnDel.Visible = false;
                 btnAdd.Visible = false;
@@ -291,92 +301,82 @@ namespace LYH.WorkOrder
                 groupBox1.Visible = false;
                 txtWONo.ReadOnly = true;
                 txtCraftSeq.ReadOnly = true;
-                textBox4.Focus();
+                txtPONo.Focus();
             }
             else
             {
-                if (textBox4.Text != "")
-                {
-                    if (textBox5.Text != "")
-                    {
-                        if (textBox6.Text != "")
-                        {
-                            if (textBox10.Text != "")
-                            {
-                                var sql =
-                                    $"UPDATE udone set ddhao='{textBox4.Text.Trim()}',kehu='{textBox5.Text.Trim()}',tuhao='{textBox6.Text.Trim()}',name='{textBox7.Text.Trim()}',yema='{textBox8.Text.Trim()}'," +
-                                    $"cailiao='{textBox9.Text.Trim()}',sulia='{textBox10.Text.Trim()}' WHERE sgdhao ='{textBox3.Text.Trim()}'";
-                                SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
-                                btnClose.Text = Resources.C退出;
-                                btnUpd.Text = Resources.X修改;
-                                btnReceiveConfirm.Visible = true;
-                                btnDel.Visible = true;
-                                btnAdd.Visible = true;
-                                btnRefresh.Visible = true;
-                                groupBox1.Visible = true;
-                                txtWONo.ReadOnly = false;
-                                txtCraftSeq.ReadOnly = false;
-                                textBox4.Text = "";
-                                textBox5.Text = "";
-                                textBox6.Text = "";
-                                textBox7.Text = "";
-                                textBox8.Text = "";
-                                textBox9.Text = "";
-                                textBox10.Text = "";
-                                textBox3.Text = "";
-                                BindDataDgv2();
-                            }
-                            else
-                            {
-                                MessageBox.Show("数量不能为空！", Resources.T提示);
-                                textBox10.Focus();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("图号不能为空！", Resources.T提示);
-                            textBox6.Focus();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("客户不能为空！", Resources.T提示);
-                        textBox5.Focus();
-                    }
-                }
-                else
+                if (txtPONo.Text == "")
                 {
                     MessageBox.Show("生产单号不能为空！", Resources.T提示);
-                    textBox4.Focus();
+                    txtPONo.Focus();
+                    return;;
                 }
+                if (txtCust.Text == "")
+                {
+                    MessageBox.Show("客户不能为空！", Resources.T提示);
+                    txtCust.Focus();
+                    return;
+                }
+                if (txtDwgNo.Text == "")
+                {
+                    MessageBox.Show("图号不能为空！", Resources.T提示);
+                    txtDwgNo.Focus();
+                    return;
+                }
+                if (txtQty.Text == "")
+                {
+                    MessageBox.Show("数量不能为空！", Resources.T提示);
+                    txtQty.Focus();
+                    return;
+                }
+                var sql =
+                    $"UPDATE udone set ddhao='{txtPONo.Text.Trim()}',kehu='{txtCust.Text.Trim()}',tuhao='{txtDwgNo.Text.Trim()}',name='{txtPrtName.Text.Trim()}',yema='{txtPageNo.Text.Trim()}'," +
+                    $"cailiao='{txtMaterial.Text.Trim()}',sulia='{txtQty.Text.Trim()}' WHERE sgdhao ='{txtWONo2.Text.Trim()}'";
+                SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
+                btnRedirect.Text = Resources.C退出;
+                btnUpd.Text = Resources.X修改;
+                btnReceiveConfirm.Visible = true;
+                btnDel.Visible = true;
+                btnAdd.Visible = true;
+                btnRefresh.Visible = true;
+                groupBox1.Visible = true;
+                txtWONo.ReadOnly = false;
+                txtCraftSeq.ReadOnly = false;
+                txtPONo.Text = "";
+                txtCust.Text = "";
+                txtDwgNo.Text = "";
+                txtPrtName.Text = "";
+                txtPageNo.Text = "";
+                txtMaterial.Text = "";
+                txtQty.Text = "";
+                txtWONo2.Text = "";
+                BindDataDgv2();
             }
         }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-            for (var i = 0; i < textBox10.Text.Length; i++)
-            {
-                if (textBox10.Text[i] >= '0' && textBox10.Text[i] <= '9')
-                {
-                }
-                else
-                {
-                    MessageBox.Show("只允许输入数字，请重新输入！", Resources.T提示);
-                    textBox10.Text = "";
-                }
-            }
-        }
-
+        
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBox3.Text = dataGridView2.SelectedCells[1].Value.ToString().Trim();
-            textBox4.Text = dataGridView2.SelectedCells[2].Value.ToString().Trim();
-            textBox5.Text = dataGridView2.SelectedCells[3].Value.ToString().Trim();
-            textBox6.Text = dataGridView2.SelectedCells[5].Value.ToString().Trim();
-            textBox7.Text = dataGridView2.SelectedCells[6].Value.ToString().Trim();
-            textBox8.Text = dataGridView2.SelectedCells[7].Value.ToString().Trim();
-            textBox9.Text = dataGridView2.SelectedCells[8].Value.ToString().Trim();
-            textBox10.Text = dataGridView2.SelectedCells[9].Value.ToString().Trim();
+            txtWONo.Text = dataGridView2.SelectedCells[1].Value.ToString().Trim();
+            txtWONo2.Text = dataGridView2.SelectedCells[1].Value.ToString().Trim();
+            txtPONo.Text = dataGridView2.SelectedCells[2].Value.ToString().Trim();
+            txtCust.Text = dataGridView2.SelectedCells[3].Value.ToString().Trim();
+            txtDwgNo.Text = dataGridView2.SelectedCells[5].Value.ToString().Trim();
+            txtPrtName.Text = dataGridView2.SelectedCells[6].Value.ToString().Trim();
+            txtPageNo.Text = dataGridView2.SelectedCells[7].Value.ToString().Trim();
+            txtMaterial.Text = dataGridView2.SelectedCells[8].Value.ToString().Trim();
+            txtQty.Text = dataGridView2.SelectedCells[9].Value.ToString().Trim();
+            txtCraftSeq.Text = dataGridView2.SelectedCells[11].Value.ToString().Trim();
+        }
+
+        private void btnRedirect_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtWONo.Text.Trim()))
+            {
+                MessageBox.Show(@"工单号不能为空！", Resources.T提示);
+                txtWONo.Focus();
+                return;
+            }
+            ActiveFrmProcCardBom();
         }
     }
 }

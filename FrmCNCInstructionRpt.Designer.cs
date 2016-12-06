@@ -323,7 +323,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 2;
-            this.label4.Text = "指令单号";
+            this.label4.Text = "工艺卡号";
             // 
             // label3
             // 

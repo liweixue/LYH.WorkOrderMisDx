@@ -1,21 +1,29 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using LYH.Framework.Commons;
 using LYH.WorkOrder.Properties;
+using QRCoder;
 using SqlHelper = LYH.WorkOrder.share.SqlHelper;
 
 namespace LYH.WorkOrder
 {
     public partial class FrmProcCard : Form
     {
+        AppConfig _appConfig=new AppConfig();
+
         public FrmProcCard()
         {
             KeyDown+=FrmWin_KeyDown;
             InitializeComponent();
+            ProcCard = new ProcCard();
         }
-        
+
+        public ProcCard ProcCard { get; }
+
         private void FrmWin_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -27,16 +35,17 @@ namespace LYH.WorkOrder
             }
         }
         
-        private void Kgjlss()
+        private void BindDataDgvProcCardNo()
         {
             var sql =
-                $"SELECT distinct zling '指令单号',cjriqi '创建日期',cjren '创建人'  FROM udstr WHERE sgdhao='{txtWONo2.Text.Trim()}'";
+                $"SELECT distinct zling '工艺卡号',cjriqi '创建日期',cjren '创建人' FROM udstr WHERE sgdhao='{txtWONo2.Text.Trim()}'";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dgvProcCardNo.DataSource = ds.Tables[0];
             dgvProcCardNo.Columns[0].Width = 200;
             dgvProcCardNo.Columns[1].Width = 200;
             dgvProcCardNo.Sort(dgvProcCardNo.Columns[0], ListSortDirection.Ascending);
         }
+
         private void InitDataGridView2()
         {
             var sql = "SELECT sgdhao '工单号', ddhao '生产单号',kehu '客户',jhqi '订单交期'," +
@@ -57,9 +66,10 @@ namespace LYH.WorkOrder
         }
         private void InitDataGridView1()
         {
-            var sql = "SELECT xuhaoone '工序号',xuhaoname '工序名称',xuhaotwo '加工工序'," +
-                      "zuone '调机时间',zutwo '单件时间',xuj1 '序价',xuj2 '公式',xuj3 '补助' FROM udtwo " +
-                      $"WHERE tuhao='{txtPrtDwgNo.Text.Trim()}' AND DeptId='{SqlHelper.DeptId}' ORDER BY xuhaoone, xuhaotwo";
+            //AND b.yema = a.yema
+            var sql = "SELECT xuhaoone '工序号',xuhaoname '工序名称',xuhaotwo '加工工序',zuone '调机时间',zutwo '单件时间'," +
+                      "xuj1 '序价',xuj2 '公式',xuj3 '补助' FROM udtwo a LEFT JOIN udone b ON b.tuhao=a.tuhao " +
+                      $"AND b.DeptId = a.DeptId WHERE b.sgdhao='{txtWONo.Text.Trim()}' AND a.DeptId ='{SqlHelper.DeptId}' ORDER BY xuhaoone,xuhaotwo";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dataGridView1.DataSource = ds.Tables[0];
             dataGridView1.Columns[0].Width = 100;
@@ -74,7 +84,7 @@ namespace LYH.WorkOrder
         }
         private void InitDataGridView3()
         {
-            var sql = "SELECT  zling '指令单号',sgdhao '工单号',ddhao '生产单号',kehu '客户'," +
+            var sql = "SELECT  zling '工艺卡号',sgdhao '工单号',ddhao '生产单号',kehu '客户'," +
                       "jhqi '订单交期',tuhao '图号',gxone '序号',gxname '工序名称',gxtwo '加工工序',tiao '调机时间'," +
                       $"danjian '单件时间' FROM udstr WHERE zling='{txtProcCardNo2.Text.Trim()}' ORDER BY gxone, gxtwo";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
@@ -111,37 +121,14 @@ namespace LYH.WorkOrder
             if (btnAdd.Text == Resources.A新增)
             {
                 txtWONo.Text = "";
-                txtCraftSeq.Text = "";
                 txtPrtDwgNo.Text = "";
                 txtProcCardNo.Text = "";
                 txtWONo.Focus();
                 btnAdd.Text = Resources.A保存;
                 txtWONo.ReadOnly = false;
-                txtCraftSeq.ReadOnly = false;
                 InitDataGridView2();
                 InitDataGridView1();
-                var orderId = DateTime.Now.ToString("yyMM").Substring(1, 3);
-                var ddaa = orderId + "0001";
-                var aadd = orderId + "9999";
-                var sql = $"SELECT Max(zling) FROM udstr WHERE zling>={ddaa} AND zling<={aadd}";
-                var scalar = SqlHelper.ExecuteScalar(SqlHelper.GetConnection(), CommandType.Text, sql);
-                if (scalar.ToString() == "")
-                {
-                    txtProcCardNo.Text = ddaa;
-                }
-                else
-                {
-                    if (scalar.ToString() == aadd)
-                    {
-                        MessageBox.Show(@"指令单号已达当月上限！", Resources.T提示);
-                    }
-                    else
-                    {
-                        var maxtid = (int)scalar;
-                        maxtid += 1;
-                        txtProcCardNo.Text = maxtid.ToString();
-                    }
-                }
+                txtProcCardNo.Text = ProcCard.GetProcCardNo();
             }
             else
             {
@@ -168,6 +155,19 @@ namespace LYH.WorkOrder
                     {
                         try
                         {
+                            txtProcCardNo.Text = ProcCard.GetProcCardNo();
+
+                            //using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+                            //{
+                            //    using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(txtProcCardNo.Text, (QRCodeGenerator.ECCLevel)_appConfig.AppConfigGet("eccLevel").ToInt32()))
+                            //    {
+                            //        using (QRCode qrCode = new QRCode(qrCodeData))
+                            //        {
+                            //            var img= qrCode.GetGraphic(20, Color.Black, Color.White,new Bitmap("/ICO/dz.png"), 18);
+                            //        }
+                            //    }
+                            //}
+
                             for (var i = 0; i < dataGridView1.RowCount - 1; i++)
                             {
                                 var craftSeq = dataGridView1.Rows[i].Cells["工序号"].Value.ToString();
@@ -196,7 +196,7 @@ namespace LYH.WorkOrder
                             }
                             tran.Commit();
                             MessageBox.Show(@"保存成功", Resources.T提示);
-                            SqlHelper.InstructionNo = int.Parse(txtProcCardNo.Text);
+                            SqlHelper.InstructionNo = txtProcCardNo.Text.Trim();
                         }
                         catch (Exception ex)
                         {
@@ -263,13 +263,13 @@ namespace LYH.WorkOrder
                 var adsu = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
                 if (adsu.HasRows)
                 {
-                    Kgjlss();
+                    BindDataDgvProcCardNo();
                 }
                 else
                 {
-                    MessageBox.Show($"此工单号{txtWONo2.Text.Trim()}未生成过指令单!!", Resources.T提示);
+                    MessageBox.Show($"此工单号{txtWONo2.Text.Trim()}未生成过工艺卡!!", Resources.T提示);
                     txtWONo2.Text = "";
-                    Kgjlss();
+                    BindDataDgvProcCardNo();
                     txtWONo2.Focus();
                 }
                 adsu.Close();
@@ -281,23 +281,22 @@ namespace LYH.WorkOrder
             if (txtProcCardNo2.Text.Length == 7)
             {
                 var sql = $"SELECT TOP 1 * FROM udstr WHERE zling='{txtProcCardNo2.Text.Trim()}'";
-                var adksu = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
-                if (adksu.HasRows)
+                var dr = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
+                if (dr.HasRows)
                 {
-                    adksu.Close();
+                    dr.Close();
                     InitDataGridView3();
-                    var kgyc = txtProcCardNo2.Text;
-                    SqlHelper.InstructionNo = int.Parse(kgyc);
+                    SqlHelper.InstructionNo = txtProcCardNo2.Text.Trim();
                 }
                 else
                 {
-                    MessageBox.Show($"此指令单号{txtProcCardNo2.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
+                    MessageBox.Show($"此工艺卡号{txtProcCardNo2.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
                     txtProcCardNo2.Text = "";
-                    adksu.Close();
+                    dr.Close();
                     InitDataGridView3();
                     txtProcCardNo2.Focus();
                 }
-                adksu.Close();
+                dr.Close();
             }
         }
 
@@ -311,7 +310,7 @@ namespace LYH.WorkOrder
                 {
                     adksu.Close();
                     InitDataGridView3();
-                    if (MessageBox.Show(@"是否要删除该指令单号", Resources.J警告, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    if (MessageBox.Show(@"是否要删除该工艺卡号", Resources.J警告, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         sql = $"delete FROM udstr WHERE zling='{txtProcCardNo2.Text.Trim()}'";
                         SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
@@ -323,7 +322,7 @@ namespace LYH.WorkOrder
                 }
                 else
                 {
-                    MessageBox.Show($"此指令单号{txtProcCardNo2.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
+                    MessageBox.Show($"此工艺卡号{txtProcCardNo2.Text.Trim()}不存在，请重新输入!!", Resources.T提示);
                     txtProcCardNo2.Text = "";
                     txtProcCardNo2.Focus();
                 }
@@ -331,70 +330,66 @@ namespace LYH.WorkOrder
             }
             else
             {
-                MessageBox.Show(@"请输入完整的指令单号！", Resources.T提示);
+                MessageBox.Show(@"请输入完整的工艺卡号！", Resources.T提示);
                 txtProcCardNo2.Focus();
             }
-        }
-
-        private void txtCraftSeq_TextChanged(object sender, EventArgs e)
-        {
-            if (!ValidateUtil.IsNumber(txtCraftSeq.Text))
-            {
-                MessageBox.Show(Resources.IsNotNumber);
-                return;
-            }
-            if (txtWONo.Text.Length == 7)
-            {
-                var sql = $"SELECT TOP 1 * FROM udone WHERE sgdhao='{txtWONo.Text.Trim()}' AND xuhao='{int.Parse(txtCraftSeq.Text)}'";
-                var adsu = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
-                if (adsu.HasRows)
-                {
-                    adsu.Read();
-                    txtPrtDwgNo.Text = adsu["tuhao"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(adsu["beione"].ToString().Trim()))
-                    {
-                        adsu.Close();
-                        if (MessageBox.Show($"此工单号{txtWONo.Text.Trim()}已创建过指令单，请确认是否创建!!", Resources.T提示, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                        {
-                            txtWONo.ReadOnly = true;
-                            InitDataGridView2();
-                            InitDataGridView1();
-                        }
-                        else
-                        {
-                            txtWONo.Text = "";
-                            txtPrtDwgNo.Text = "";
-                            txtProcCardNo.Text = "";
-                            txtWONo.Focus();
-                            txtWONo.ReadOnly = true;
-                            btnAdd.Text = Resources.A新增;
-                            InitDataGridView2();
-                            InitDataGridView1();
-                        }
-                    }
-                    else
-                    {
-                        adsu.Close();
-                        txtPrtDwgNo.ReadOnly = true;
-                        InitDataGridView2();
-                        InitDataGridView1();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"此工单号{txtWONo.Text.Trim()}不存在，请重新输入或先接收施工单!!", Resources.T提示);
-                    txtWONo.Text = "";
-                    txtWONo.Focus();
-                    adsu.Close();
-                }
-            }
-
         }
         
         private void dgvProcCardNo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtProcCardNo2.Text = dgvProcCardNo.CurrentCell.Value.ToString();
             txtProcCardNo2_TextChanged(sender, e);
+        }
+
+        private void txtWONo_TextChanged(object sender, EventArgs e)
+        {
+            //if (!ValidateUtil.IsNumber(txtWONo.Text))
+            //{
+            //    MessageBox.Show(Resources.IsNotNumber);
+            //    return;
+            //}
+            if (txtWONo.Text.Length != 7) return;
+            var sql = $"SELECT TOP 1 * FROM udone WHERE sgdhao='{txtWONo.Text.Trim()}' AND DeptId='{SqlHelper.DeptId}'";
+            var adsu = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
+            if (adsu.HasRows)
+            {
+                adsu.Read();
+                txtPrtDwgNo.Text = adsu["tuhao"].ToString().Trim();
+                if (!string.IsNullOrEmpty(adsu["beione"].ToString().Trim()))
+                {
+                    adsu.Close();
+                    if (MessageBox.Show($"此工单号{txtWONo.Text.Trim()}已创建过工艺卡，请确认是否创建!!", Resources.T提示, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        txtWONo.ReadOnly = true;
+                        InitDataGridView2();
+                        InitDataGridView1();
+                    }
+                    else
+                    {
+                        txtWONo.Text = "";
+                        txtPrtDwgNo.Text = "";
+                        txtProcCardNo.Text = "";
+                        txtWONo.Focus();
+                        txtWONo.ReadOnly = true;
+                        btnAdd.Text = Resources.A新增;
+                        InitDataGridView2();
+                        InitDataGridView1();
+                    }
+                }
+                else
+                {
+                    adsu.Close();
+                    txtPrtDwgNo.ReadOnly = true;
+                    InitDataGridView2();
+                    InitDataGridView1();
+                }
+            }
+            else
+            {
+                MessageBox.Show($"工单{txtWONo.Text.Trim()}未接收，请重新输入或先接收工单!!", Resources.T提示);
+                txtWONo.Focus();
+                adsu.Close();
+            }
         }
     }
 }

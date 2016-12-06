@@ -84,6 +84,9 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -100,7 +103,7 @@
     </Reference>
     <Reference Include="LYH.Framework.BaseUIDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\LYH.Framework.BaseUIDx.dll</HintPath>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.BaseUIDx.dll</HintPath>
     </Reference>
     <Reference Include="LYH.Framework.Commons, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -108,19 +111,19 @@
     </Reference>
     <Reference Include="LYH.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\LYH.Framework.ControlUtil.dll</HintPath>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.ControlUtil.dll</HintPath>
     </Reference>
     <Reference Include="LYH.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\LYH.Pager.Entity.dll</HintPath>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.Pager.Entity.dll</HintPath>
     </Reference>
     <Reference Include="LYH.Pager.WinControlDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\LYH.Pager.WinControlDx.dll</HintPath>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.Pager.WinControlDx.dll</HintPath>
     </Reference>
     <Reference Include="LYH.SecurityDx, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\LYH.SecurityDx.dll</HintPath>
+      <HintPath>..\LYH.BomMisDx\DLL\LYH.SecurityDx.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -136,6 +139,10 @@
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="QRCoder, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleUpdater, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c532149a76b9a64b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\SimpleUpdater.exe</HintPath>
@@ -145,6 +152,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -162,6 +170,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckUpdate.cs" />
     <Compile Include="ChildWinManage.cs" />
     <Compile Include="cncCryst.cs">
       <AutoGen>True</AutoGen>
@@ -192,6 +201,7 @@
     <Compile Include="GlobalControl.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ProcCard.cs" />
     <Compile Include="ReflectionUtil.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -344,6 +354,7 @@
     <Compile Include="share\SqlHelper.cs" />
     <Compile Include="share\StringHelper.cs" />
     <Compile Include="share\FileDirectoryUtility.cs" />
+    <Compile Include="UpdaterExt.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -479,7 +490,10 @@
     <Content Include="DLL\LYH.Pager.Entity.dll" />
     <Content Include="DLL\LYH.Pager.WinControlDx.dll" />
     <Content Include="DLL\LYH.SecurityDx.dll" />
+    <Content Include="DLL\QRCoder.dll" />
     <Content Include="DLL\SimpleUpdater.exe" />
+    <Content Include="DLL\UnityEngine.dll" />
+    <Content Include="ICO\dz.png" />
     <Content Include="ICO\dz2.ico" />
     <Content Include="ICO\dzscb.ico" />
     <Content Include="UpdateLog\版本更新记录.txt">
@@ -539,6 +553,9 @@
       <Project>{b2d00483-25d4-4144-a08b-481952be404c}</Project>
       <Name>SpellSearchBoxEx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="QRCode\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

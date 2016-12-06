@@ -509,7 +509,7 @@
             this.KeyPreview = true;
             this.Name = "FrmContructionHandwriting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "手写施工单录入";
+            this.Text = "手写工单录入";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

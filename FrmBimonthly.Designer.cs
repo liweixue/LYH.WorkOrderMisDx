@@ -336,7 +336,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(209, 30);
             this.label8.TabIndex = 59;
-            this.label8.Text = "跨月施工单录入";
+            this.label8.Text = "跨月工单录入";
             // 
             // label10
             // 
@@ -346,7 +346,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(507, 46);
             this.label10.TabIndex = 60;
-            this.label10.Text = "注:此窗口为对账时出现未录入施工单时使用补录入,其他时段禁用,请小心使用此窗口,以免影响月结数据的准确性!";
+            this.label10.Text = "注:此窗口为对账时出现未录入工单时使用补录入,其他时段禁用,请小心使用此窗口,以免影响月结数据的准确性!";
             // 
             // textBox15
             // 
@@ -609,7 +609,7 @@
             this.MinimizeBox = false;
             this.Name = "Form11";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "跨月施工单录入";
+            this.Text = "跨月工单录入";
             this.Load += new System.EventHandler(this.Form11_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

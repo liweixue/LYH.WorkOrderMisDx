@@ -156,7 +156,7 @@ namespace LYH.WorkOrder
         {
             if (txtOrderQt.Text == "")
             {
-                MessageBox.Show(@"施工单数量不能为空！", Resources.T提示);
+                MessageBox.Show(@"工单数量不能为空！", Resources.T提示);
                 txtOrderQt.Focus();
             }
             else if (txtCraft.Text == "")

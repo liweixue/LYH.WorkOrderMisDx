@@ -39,7 +39,7 @@ namespace LYH.WorkOrder.share
         /// </summary>
         public static string DeptId;
 
-        public static int InstructionNo;
+        public static string InstructionNo;
 
         #region UpdateDataset 更新数据集
 

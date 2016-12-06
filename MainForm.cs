@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using FSLib.App.SimpleUpdater;
 using LYH.Framework.BaseUI;
 using LYH.Framework.BaseUI.SplashScreen;
 using LYH.Framework.Commons;
 using LYH.WorkOrder.Properties;
+using Microsoft.VisualBasic;
 using SqlHelper = LYH.WorkOrder.share.SqlHelper;
+using Timer = System.Windows.Forms.Timer;
 
 namespace LYH.WorkOrder
 {
     public partial class MainForm : BaseForm
     {
         //private int childFormNumber = 0;
+        private readonly Timer _timer;
 
         public MainForm()
         {
@@ -23,9 +28,11 @@ namespace LYH.WorkOrder
             Thread.Sleep(50);
             Splasher.Close();
 
+            _timer = new Timer {Interval =10*60*1000};
+            _timer.Tick += timer_Tick;
         }
 
-        private void 施工单录入ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 工单录入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SqlHelper.UserType == Resources.UT_Input || SqlHelper.UserType == Resources.UT_Check ||
                 SqlHelper.UserType == Resources.UT_Admin)
@@ -68,6 +75,7 @@ namespace LYH.WorkOrder
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            _timer.Enabled = true;
         }
 
         private void InitUserRelated()
@@ -75,7 +83,7 @@ namespace LYH.WorkOrder
             tssl.Text = $"   状态：当前登录用户==>{SqlHelper.UserName}   登录类型==>{SqlHelper.UserType}";
         }
 
-        private void 手工施工单制作ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 手工工单制作ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SqlHelper.UserType == Resources.UT_Input || SqlHelper.UserType == Resources.UT_Admin ||
                 SqlHelper.UserType == Resources.UT_Check)
@@ -95,7 +103,7 @@ namespace LYH.WorkOrder
             aboutForm.ShowDialog();
         }
 
-        private void p15施工单更新ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void p15工单更新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SqlHelper.UserType == Resources.UT_Check || SqlHelper.UserType == Resources.UT_Admin)
             {
@@ -103,7 +111,7 @@ namespace LYH.WorkOrder
             }
         }
 
-        private void 跨月施工单录入ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 跨月工单录入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SqlHelper.UserType == Resources.UT_Check || SqlHelper.UserType == Resources.UT_Admin)
             {
@@ -111,12 +119,12 @@ namespace LYH.WorkOrder
             }
         }
 
-        private void 施工单查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 工单查询ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChildWinManage.LoadMdiForm(this, typeof (FrmConstructionGather));
         }
 
-        private void 施工单接收ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 工单接收ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChildWinManage.LoadMdiForm(this, typeof (FrmWorkOrderReceive));
         }
@@ -126,12 +134,12 @@ namespace LYH.WorkOrder
             ChildWinManage.LoadMdiForm(this, typeof (FrmProcCardBom));
         }
 
-        private void 指令单管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 工艺卡管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChildWinManage.LoadMdiForm(this, typeof (FrmProcCard));
         }
 
-        private void 指令单录入ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 工艺卡录入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChildWinManage.LoadMdiForm(this, typeof (FrmProcCardEntry));
         }
@@ -186,6 +194,11 @@ namespace LYH.WorkOrder
                 mdiChild.Width = Width/MdiChildren.Length;
             }
             LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            UpdaterExt.CheckUpdate();
         }
     }
 }
