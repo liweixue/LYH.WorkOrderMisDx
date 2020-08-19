@@ -200,11 +200,10 @@ namespace LYH.WorkOrder
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Checked = false;
             this.dateTimePicker2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(72, 67);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(121, 23);
             this.dateTimePicker2.TabIndex = 2;
@@ -221,11 +220,10 @@ namespace LYH.WorkOrder
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(72, 40);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 23);
             this.dateTimePicker1.TabIndex = 1;
@@ -313,7 +311,8 @@ namespace LYH.WorkOrder
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {"审核",
+            this.comboBox1.Items.AddRange(new object[] {
+            "审核",
             "未审核",
             "全部"});
             this.comboBox1.Location = new System.Drawing.Point(359, 5);
@@ -328,7 +327,7 @@ namespace LYH.WorkOrder
             this.txtCust.Location = new System.Drawing.Point(228, 5);
             this.txtCust.MaxItemCount = 20;
             this.txtCust.Name = "txtCust";
-            this.txtCust.SearchMode = SearchMode.Contains;
+            this.txtCust.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
             this.txtCust.Size = new System.Drawing.Size(90, 21);
             this.txtCust.SpellSearchSource = null;
             this.txtCust.TabIndex = 3;
@@ -400,7 +399,7 @@ namespace LYH.WorkOrder
             this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(3, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 14);
+            this.label2.Size = new System.Drawing.Size(49, 14);
             this.label2.TabIndex = 3;
             this.label2.Text = "工单号";
             // 

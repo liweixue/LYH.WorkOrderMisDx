@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using LYH.Framework.Commons;
 using LYH.WorkOrder.share;
 using SqlHelper = LYH.WorkOrder.share.SqlHelper;
 

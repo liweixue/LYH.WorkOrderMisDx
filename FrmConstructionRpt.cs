@@ -7,7 +7,6 @@ using System.Linq;
 using System.Windows.Forms;
 using LYH.Framework.BaseUI;
 using LYH.Framework.Commons;
-using LYH.Framework.ControlUtil;
 using LYH.WorkOrder.Properties;
 using SqlHelper = LYH.WorkOrder.share.SqlHelper;
 
@@ -90,7 +89,7 @@ namespace LYH.WorkOrder
         private void btnSearch_Click(object sender, EventArgs e) //查询
         {
             CtrlUtil.ClearDgv(dataGridView1);
-            txtWONo.Text = "";
+            
             var wheres = new List<string>();
             string d;
             if (!string.IsNullOrEmpty(comboBox2.Text.Trim()))
@@ -111,6 +110,10 @@ namespace LYH.WorkOrder
             {
                 var dtp = DateTime.Parse(dateTimePicker2.Text).AddDays(1);
                 wheres.Add($" {d}<'{dtp}' ");
+            }
+            if (txtWONo.Text.Trim().Length > 0)
+            {
+                wheres.Add($" a.shigongdanhao like '%{txtWONo.Text.Trim()}%'");
             }
             if (txtMONo.Text.Trim().Length > 0)
             {

@@ -46,7 +46,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,6 +58,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>LYH.WorkOrder.Program</StartupObject>
@@ -81,71 +84,73 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Aspose.Cells, Version=4.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>.\Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="LYH.Framework.BaseUIDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.BaseUIDx.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="LYH.Framework.Commons, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.Commons.dll</HintPath>
-    </Reference>
-    <Reference Include="LYH.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.Framework.ControlUtil.dll</HintPath>
-    </Reference>
-    <Reference Include="LYH.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.Pager.Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="LYH.Pager.WinControlDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.Pager.WinControlDx.dll</HintPath>
-    </Reference>
-    <Reference Include="LYH.SecurityDx, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYH.BomMisDx\DLL\LYH.SecurityDx.dll</HintPath>
+    <Reference Include="LYH.Security">
+      <HintPath>..\LYH.BomMisDx\bin\Release\LYH.Security.exe</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>DLL\Microsoft.Office.Interop.Word.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\LYH.BomMisDx\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\LYH.BomMisDx\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="QRCoder, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\QRCoder.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleUpdater, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c532149a76b9a64b, processorArchitecture=MSIL">
+    <Reference Include="SimpleUpdater, Version=4.3.0.0, Culture=neutral, PublicKeyToken=c532149a76b9a64b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\SimpleUpdater.exe</HintPath>
+      <HintPath>..\SimpleUpdater\SimpleUpdater\FSLib.App.SimpleUpdater\bin\Release\net40\SimpleUpdater.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -159,6 +164,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -170,27 +176,15 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckUpdate.cs" />
-    <Compile Include="ChildWinManage.cs" />
     <Compile Include="cncCryst.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>cncCryst.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DGVExcelExtend.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FrmpRrocCardEntry1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FrmpRrocCardEntry.resx</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPrintRdlc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPrintRdlc.Designer.cs">
-      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrint.cs">
       <SubType>Form</SubType>
@@ -198,18 +192,20 @@
     <Compile Include="FrmPrint.Designer.cs">
       <DependentUpon>FrmPrint.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrintRdlc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintRdlc.Designer.cs">
+      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalControl.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ProcCard.cs" />
-    <Compile Include="ReflectionUtil.cs" />
-    <Compile Include="DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet1.Designer.cs">
+    <Compile Include="ProcCardDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>ProcCardDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="RowMergeView.cs">
       <SubType>Component</SubType>
@@ -263,23 +259,23 @@
     <Compile Include="FrmProcCard.Designer.cs">
       <DependentUpon>FrmProcCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmpRrocCardEntry.cs">
+    <Compile Include="FrmProcCardInput.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmpRrocCardEntry.Designer.cs">
-      <DependentUpon>FrmpRrocCardEntry.cs</DependentUpon>
+    <Compile Include="FrmProcCardInput.Designer.cs">
+      <DependentUpon>FrmProcCardInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCNCInstructionRpt.cs">
+    <Compile Include="FrmProcCardRpt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCNCInstructionRpt.Designer.cs">
-      <DependentUpon>FrmCNCInstructionRpt.cs</DependentUpon>
+    <Compile Include="FrmProcCardRpt.Designer.cs">
+      <DependentUpon>FrmProcCardRpt.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmConstructionEntry.cs">
+    <Compile Include="FrmConstructionInput.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmConstructionEntry.designer.cs">
-      <DependentUpon>FrmConstructionEntry.cs</DependentUpon>
+    <Compile Include="FrmConstructionInput.designer.cs">
+      <DependentUpon>FrmConstructionInput.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProcCardUprice.cs">
       <SubType>Form</SubType>
@@ -354,22 +350,27 @@
     <Compile Include="share\SqlHelper.cs" />
     <Compile Include="share\StringHelper.cs" />
     <Compile Include="share\FileDirectoryUtility.cs" />
-    <Compile Include="UpdaterExt.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cncCryst.resx">
       <DependentUpon>cncCryst.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="cncCryst.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cncCryst.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrintRdlc.resx">
-      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrint.resx">
       <DependentUpon>FrmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintRdlc.resx">
+      <DependentUpon>FrmPrintRdlc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcCardInput.resx">
+      <DependentUpon>FrmProcCardInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWorkOrderProcUPrice.resx">
       <DependentUpon>FrmWorkOrderProcUPrice.cs</DependentUpon>
@@ -395,16 +396,11 @@
     <EmbeddedResource Include="FrmProcCard.resx">
       <DependentUpon>FrmProcCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmpRrocCardEntry.resx">
-      <DependentUpon>FrmpRrocCardEntry.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FrmpRrocCardEntry1.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="FrmProcCardRpt.resx">
+      <DependentUpon>FrmProcCardRpt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCNCInstructionRpt.resx">
-      <DependentUpon>FrmCNCInstructionRpt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmConstructionEntry.resx">
-      <DependentUpon>FrmConstructionEntry.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConstructionInput.resx">
+      <DependentUpon>FrmConstructionInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProcCardUprice.resx">
       <DependentUpon>FrmProcCardUprice.cs</DependentUpon>
@@ -442,25 +438,30 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="RowMergeView.resx">
       <DependentUpon>RowMergeView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="packages.config" />
+    <None Include="PrintTemplate\工艺卡模板.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="DataSet1.xsd">
+    <None Include="PrintTemplate\工艺卡模板.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ProcCardDataSet.xsc">
+      <DependentUpon>ProcCardDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProcCardDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProcCardDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="ProcCardDataSet.xss">
+      <DependentUpon>ProcCardDataSet.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -475,27 +476,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="share\WordClass.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ToExcel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\Aspose.Cells.dll" />
     <Content Include="DLL\Interop.Excel.dll" />
     <Content Include="DLL\Interop.Office.dll" />
-    <Content Include="DLL\LWX.SpellSearchBoxEx.dll" />
-    <Content Include="DLL\LYH.Framework.BaseUIDx.dll" />
-    <Content Include="DLL\LYH.Framework.BaseUIDx.pdb" />
-    <Content Include="DLL\LYH.Framework.Commons.dll" />
-    <Content Include="DLL\LYH.Framework.ControlUtil.dll" />
-    <Content Include="DLL\LYH.Pager.Entity.dll" />
-    <Content Include="DLL\LYH.Pager.WinControlDx.dll" />
-    <Content Include="DLL\LYH.SecurityDx.dll" />
     <Content Include="DLL\QRCoder.dll" />
-    <Content Include="DLL\SimpleUpdater.exe" />
     <Content Include="DLL\UnityEngine.dll" />
     <Content Include="ICO\dz.png" />
     <Content Include="ICO\dz2.ico" />
     <Content Include="ICO\dzscb.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="UpdateLog\版本更新记录.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -504,9 +509,264 @@
     <Content Include="Resources\53888c0def2e0.jpg" />
     <Content Include="Resources\System.ico" />
     <Content Include="share\说明.txt" />
-    <None Include="RegisterDEV-v14.1.bat">
+    <Content Include="zh-Hans\DevExpress.Charts.Designer.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Dashboard.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Dashboard.v17.1.Web.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Dashboard.v17.1.Win.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Data.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.DataAccess.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.DataAccess.v17.1.UI.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Diagram.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.PivotChart.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Reports.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Scheduler.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Scheduler.Web.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Security.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Validation.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Web.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.ExpressApp.Win.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Map.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Office.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Pdf.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.PivotGrid.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Printing.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.RichEdit.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Snap.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Snap.v17.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Snap.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Sparkline.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Spreadsheet.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Utils.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Utils.v17.1.UI.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxHtmlEditor.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxRichEdit.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxScheduler.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxSpellChecker.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxSpreadsheet.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.ASPxTreeList.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.Resources.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Web.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Charts.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Controls.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Core.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Docking.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.DocumentViewer.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Gauges.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Grid.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.LayoutControl.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.NavBar.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.PdfViewer.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Printing.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.PropertyGrid.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.ReportDesigner.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Ribbon.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.RichEdit.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Scheduler.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.SpellChecker.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpf.Spreadsheet.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.Xpo.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraBars.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraCharts.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraCharts.v17.1.Wizard.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraEditors.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraGauges.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraGauges.v17.1.Presets.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraGrid.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraLayout.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraNavBar.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraPdfViewer.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraPivotGrid.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraPrinting.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraReports.v17.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraReports.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraReports.v17.1.Web.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraRichEdit.v17.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraRichEdit.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraScheduler.v17.1.Core.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraScheduler.v17.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraScheduler.v17.1.Reporting.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraScheduler.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraSpellChecker.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraSpreadsheet.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraTreeList.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraVerticalGrid.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-Hans\DevExpress.XtraWizard.v17.1.resources.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="RegisterDEV-v17.1.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="ProcCard.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Resources\start.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -549,13 +809,25 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MES\SpellSearchBoxEx\SpellSearchBoxEx.csproj">
-      <Project>{b2d00483-25d4-4144-a08b-481952be404c}</Project>
-      <Name>SpellSearchBoxEx</Name>
-    </ProjectReference>
+    <Folder Include="QRCode\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="QRCode\" />
+    <ProjectReference Include="..\LYH.Framework.BaseUIDx\LYH.Framework.BaseUI.csproj">
+      <Project>{4E49D66C-4E6C-4A12-9ED3-6B6FF76E3851}</Project>
+      <Name>LYH.Framework.BaseUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYH.Framework.Commons\LYH.Framework.Commons.csproj">
+      <Project>{380AE65A-E19C-4E5D-83A4-ACC8F5760FE3}</Project>
+      <Name>LYH.Framework.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYH.Framework.ControlUtil\LYH.Framework.ControlUtil.csproj">
+      <Project>{1dd712fe-31bc-4b5f-a5df-65f669f67c47}</Project>
+      <Name>LYH.Framework.ControlUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpellSearchBoxEx\SpellSearchBoxEx.csproj">
+      <Project>{B2D00483-25D4-4144-A08B-481952BE404C}</Project>
+      <Name>SpellSearchBoxEx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -49,8 +49,7 @@ namespace LYH.WorkOrder
 
         private void FrmWin_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
+            switch (e.KeyCode){
                 case Keys.Escape:
                     Close();
                     DialogResult = DialogResult.Cancel;

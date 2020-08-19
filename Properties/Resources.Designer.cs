@@ -160,6 +160,15 @@ namespace LYH.WorkOrder.Properties {
         }
         
         /// <summary>
+        ///   查找类似 普冲 的本地化字符串。
+        /// </summary>
+        internal static string P普冲 {
+            get {
+                return ResourceManager.GetString("P普冲", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 S 的本地化字符串。
         /// </summary>
         internal static string SC_S {
@@ -178,7 +187,7 @@ namespace LYH.WorkOrder.Properties {
         }
         
         /// <summary>
-        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Icon start {
             get {
@@ -188,7 +197,7 @@ namespace LYH.WorkOrder.Properties {
         }
         
         /// <summary>
-        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Icon System {
             get {
@@ -284,6 +293,15 @@ namespace LYH.WorkOrder.Properties {
         internal static string X修改 {
             get {
                 return ResourceManager.GetString("X修改", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 压段差 的本地化字符串。
+        /// </summary>
+        internal static string Y压段差 {
+            get {
+                return ResourceManager.GetString("Y压段差", resourceCulture);
             }
         }
         

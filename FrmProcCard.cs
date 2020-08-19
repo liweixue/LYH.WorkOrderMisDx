@@ -1,28 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using Aspose.Cells;
+using LYH.Framework.BaseUI;
 using LYH.Framework.Commons;
 using LYH.WorkOrder.Properties;
-using QRCoder;
-using SqlHelper = LYH.WorkOrder.share.SqlHelper;
+using LYH.WorkOrder.share;
 
 namespace LYH.WorkOrder
 {
     public partial class FrmProcCard : Form
     {
-        AppConfig _appConfig=new AppConfig();
+        private AppConfig _appConfig = new AppConfig();
 
         public FrmProcCard()
         {
-            KeyDown+=FrmWin_KeyDown;
+            KeyDown += FrmWin_KeyDown;
             InitializeComponent();
             ProcCard = new ProcCard();
         }
 
         public ProcCard ProcCard { get; }
+
+
+        public DataGridView DataGridView3
+        {
+            set { dataGridView3 = value; }
+            get { return dataGridView3; }
+        }
 
         private void FrmWin_KeyDown(object sender, KeyEventArgs e)
         {
@@ -34,15 +43,13 @@ namespace LYH.WorkOrder
                     break;
             }
         }
-        
+
         private void BindDataDgvProcCardNo()
         {
             var sql =
-                $"SELECT distinct zling '工艺卡号',cjriqi '创建日期',cjren '创建人' FROM udstr WHERE sgdhao='{txtWONo2.Text.Trim()}'";
+                $"SELECT DISTINCT zling '工艺卡号',cjren '创建人' FROM udstr WHERE sgdhao='{txtWONo2.Text.Trim()}'";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dgvProcCardNo.DataSource = ds.Tables[0];
-            dgvProcCardNo.Columns[0].Width = 200;
-            dgvProcCardNo.Columns[1].Width = 200;
             dgvProcCardNo.Sort(dgvProcCardNo.Columns[0], ListSortDirection.Ascending);
         }
 
@@ -64,6 +71,7 @@ namespace LYH.WorkOrder
             dataGridView2.Columns[8].Width = 80;
             dataGridView2.Sort(dataGridView2.Columns[1], ListSortDirection.Ascending);
         }
+
         private void InitDataGridView1()
         {
             //AND b.yema = a.yema
@@ -82,28 +90,31 @@ namespace LYH.WorkOrder
             dataGridView1.Columns[7].Width = 100;
             dataGridView1.Sort(dataGridView1.Columns[1], ListSortDirection.Ascending);
         }
+
         private void InitDataGridView3()
         {
-            var sql = "SELECT  zling '工艺卡号',sgdhao '工单号',ddhao '生产单号',kehu '客户'," +
-                      "jhqi '订单交期',tuhao '图号',gxone '序号',gxname '工序名称',gxtwo '加工工序',tiao '调机时间'," +
-                      $"danjian '单件时间' FROM udstr WHERE zling='{txtProcCardNo2.Text.Trim()}' ORDER BY gxone, gxtwo";
-            var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
+            var ds = ProcCard.GetProcCardDataSet(txtProcCardNo2.Text.Trim());
             dataGridView3.DataSource = ds.Tables[0];
-            dataGridView3.Columns[0].Width = 100;
-            dataGridView3.Columns[1].Width = 100;
-            dataGridView3.Columns[2].Width = 100;
-            dataGridView3.Columns[3].Width = 100;
-            dataGridView3.Columns[4].Width = 100;
-            dataGridView3.Columns[5].Width = 100;
-            dataGridView3.Columns[6].Width = 100;
-            dataGridView3.Columns[7].Width = 100;
-            dataGridView3.Columns[8].Width = 100;
-            dataGridView3.Columns[9].Width = 100;
-            dataGridView3.Columns[10].Width = 100;
+            dataGridView3.AutoResizeColumns();
+            //for (int i = 0; i < dataGridView3.ColumnCount; i++)
+            //{
+            //    dataGridView3.Columns[i].Width = 100;
+            //}
+            //dataGridView3.Columns[0].Width = 100;
+            //dataGridView3.Columns[1].Width = 100;
+            //dataGridView3.Columns[2].Width = 100;
+            //dataGridView3.Columns[3].Width = 100;
+            //dataGridView3.Columns[4].Width = 100;
+            //dataGridView3.Columns[5].Width = 100;
+            //dataGridView3.Columns[6].Width = 100;
+            //dataGridView3.Columns[7].Width = 100;
+            //dataGridView3.Columns[8].Width = 100;
+            //dataGridView3.Columns[9].Width = 100;
+            //dataGridView3.Columns[10].Width = 100;
             dataGridView3.Sort(dataGridView3.Columns[1], ListSortDirection.Ascending);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)//取消
+        private void btnCancel_Click(object sender, EventArgs e) //取消
         {
             txtWONo.Text = "";
             txtPrtDwgNo.Text = "";
@@ -116,7 +127,7 @@ namespace LYH.WorkOrder
             InitDataGridView1();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)//保存
+        private void btnAdd_Click(object sender, EventArgs e) //保存
         {
             if (btnAdd.Text == Resources.A新增)
             {
@@ -141,13 +152,13 @@ namespace LYH.WorkOrder
                     var cust = dataReader["kehu"].ToString().Trim();
                     var planDate = dataReader["jhwxri"].ToString().Trim();
                     var prtDwgNo = dataReader["tuhao"].ToString().Trim();
-                    var prtName = dataReader["name"].ToString().Trim();
+                    var prtName = dataReader["name"].ToString().Trim().Replace("'", "''");
                     var pageNo = dataReader["yema"].ToString().Trim();
                     var meatrial = dataReader["cailiao"].ToString().Trim();
                     var qty = dataReader["sulia"].ToString().Trim();
                     dataReader.Close();
 
-                    if (dataGridView1.RowCount == 0) { return; }
+                    if (dataGridView1.RowCount == 0) return;
                     var conn = SqlHelper.GetConnection();
                     conn.Open();
                     var tran = conn.BeginTransaction();
@@ -194,9 +205,10 @@ namespace LYH.WorkOrder
                                     $"'{pageNo}','{qty}','{meatrial}','{craftSeq}','{craft}','{processCardSeq}','{debugTime}','{singleProcTime}','{processUPrice}','{formula}','{subsidy}','{DateTime.Now}','{SqlHelper.UserName}')";
                                 SqlHelper.ExecuteNonQuery(tran, CommandType.Text, strSql);
                             }
+
                             tran.Commit();
                             MessageBox.Show(@"保存成功", Resources.T提示);
-                            SqlHelper.InstructionNo = txtProcCardNo.Text.Trim();
+                            SqlHelper.ProcCardNo = txtProcCardNo.Text.Trim();
                         }
                         catch (Exception ex)
                         {
@@ -204,9 +216,11 @@ namespace LYH.WorkOrder
                             MessageBox.Show(ex.Message);
                         }
                     }
+
                     var sqlkgy = $"UPDATE udone set beione='1' WHERE sgdhao='{txtWONo.Text.Trim()}'";
                     SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sqlkgy);
                 }
+
                 dataReader.Close();
                 btnAdd.Text = Resources.A新增;
                 txtWONo.Focus();
@@ -231,6 +245,7 @@ namespace LYH.WorkOrder
             aboutForm.ShowDialog();
         }
 
+
         private void btnPrint2_Click(object sender, EventArgs e)
         {
             if (txtProcCardNo2.Text.Length < 7)
@@ -240,17 +255,26 @@ namespace LYH.WorkOrder
             }
             else
             {
-                var gl = SqlHelper.InstructionNo;
-                var lg = gl.ToString();
+                var gl = SqlHelper.ProcCardNo;
+                var lg = gl;
                 if (lg == "")
                 {
                     MessageBox.Show("单号不能为空", Resources.T提示);
                     txtProcCardNo2.Focus();
-                }
-                else
+                }else
                 {
-                    var aboutForm = new FrmPrint();
-                    aboutForm.ShowDialog();
+                    //var print = new FrmPrintRdlc();
+                    //print.ShowDialog();
+                    var dtDataTable = (DataTable)dataGridView3.DataSource;
+                    ProcCard.SaveExcel(txtProcCardNo2.Text.Trim(), out var error);
+                    if (!string.IsNullOrEmpty(error)) MessageUtil.ShowError(error);
+
+                    //var dictReplace = new Dictionary<string, string>();
+                    //foreach (DataRow row in dtDataTable.Rows)
+                    //foreach (DataColumn column in dtDataTable.Columns)
+                    //    dictReplace.Add(column.ColumnName, row[column.ColumnName].ToString());
+
+                    //AsposeExcelTools.ExportWithReplace(ExcelTemplateFile, txtProcCardNo2 + ".xlsx", dictReplace);
                 }
             }
         }
@@ -272,6 +296,7 @@ namespace LYH.WorkOrder
                     BindDataDgvProcCardNo();
                     txtWONo2.Focus();
                 }
+
                 adsu.Close();
             }
         }
@@ -286,7 +311,7 @@ namespace LYH.WorkOrder
                 {
                     dr.Close();
                     InitDataGridView3();
-                    SqlHelper.InstructionNo = txtProcCardNo2.Text.Trim();
+                    SqlHelper.ProcCardNo = txtProcCardNo2.Text.Trim();
                 }
                 else
                 {
@@ -296,6 +321,7 @@ namespace LYH.WorkOrder
                     InitDataGridView3();
                     txtProcCardNo2.Focus();
                 }
+
                 dr.Close();
             }
         }
@@ -310,7 +336,8 @@ namespace LYH.WorkOrder
                 {
                     adksu.Close();
                     InitDataGridView3();
-                    if (MessageBox.Show(@"是否要删除该工艺卡号", Resources.J警告, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    if (MessageBox.Show(@"是否要删除该工艺卡号", Resources.J警告, MessageBoxButtons.OKCancel,
+                            MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         sql = $"delete FROM udstr WHERE zling='{txtProcCardNo2.Text.Trim()}'";
                         SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sql);
@@ -326,6 +353,7 @@ namespace LYH.WorkOrder
                     txtProcCardNo2.Text = "";
                     txtProcCardNo2.Focus();
                 }
+
                 adksu.Close();
             }
             else
@@ -334,7 +362,7 @@ namespace LYH.WorkOrder
                 txtProcCardNo2.Focus();
             }
         }
-        
+
         private void dgvProcCardNo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtProcCardNo2.Text = dgvProcCardNo.CurrentCell.Value.ToString();
@@ -350,15 +378,16 @@ namespace LYH.WorkOrder
             //}
             if (txtWONo.Text.Length != 7) return;
             var sql = $"SELECT TOP 1 * FROM udone WHERE sgdhao='{txtWONo.Text.Trim()}' AND DeptId='{SqlHelper.DeptId}'";
-            var adsu = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
-            if (adsu.HasRows)
+            var dr = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
+            if (dr.HasRows)
             {
-                adsu.Read();
-                txtPrtDwgNo.Text = adsu["tuhao"].ToString().Trim();
-                if (!string.IsNullOrEmpty(adsu["beione"].ToString().Trim()))
+                dr.Read();
+                txtPrtDwgNo.Text = dr["tuhao"].ToString().Trim();
+                if (!string.IsNullOrEmpty(dr["beione"].ToString().Trim()))
                 {
-                    adsu.Close();
-                    if (MessageBox.Show($"此工单号{txtWONo.Text.Trim()}已创建过工艺卡，请确认是否创建!!", Resources.T提示, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    dr.Close();
+                    if (MessageBox.Show($"此工单号{txtWONo.Text.Trim()}已创建过工艺卡，请确认是否创建!!", Resources.T提示,
+                            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         txtWONo.ReadOnly = true;
                         InitDataGridView2();
@@ -378,7 +407,7 @@ namespace LYH.WorkOrder
                 }
                 else
                 {
-                    adsu.Close();
+                    dr.Close();
                     txtPrtDwgNo.ReadOnly = true;
                     InitDataGridView2();
                     InitDataGridView1();
@@ -388,7 +417,7 @@ namespace LYH.WorkOrder
             {
                 MessageBox.Show($"工单{txtWONo.Text.Trim()}未接收，请重新输入或先接收工单!!", Resources.T提示);
                 txtWONo.Focus();
-                adsu.Close();
+                dr.Close();
             }
         }
     }

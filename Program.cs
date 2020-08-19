@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using FSLib.App.SimpleUpdater;
 using LYH.Framework.BaseUI;
 using LYH.Framework.BaseUI.SplashScreen;
 using LYH.Framework.Commons;
@@ -27,8 +25,8 @@ namespace LYH.WorkOrder
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            UpdaterExt.CheckUpdate();
-            
+            UpdaterExtend.CheckUpdate();
+
             if (args.Length > 0)
             {
                 LoginByArgs(args);

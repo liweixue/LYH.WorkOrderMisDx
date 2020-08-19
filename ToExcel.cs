@@ -10,7 +10,7 @@ namespace LYH.WorkOrder
         #region 将导出
         public bool DataGridViewToExcel(DataGridView dataGridView1)
         {
-            var saveFileDialog = new SaveFileDialog() { Filter = "Execl files (*.xlsx)|*.xlsx", FilterIndex = 0, RestoreDirectory = true, CreatePrompt = true, Title = "Export Excel File" };
+            var saveFileDialog = new SaveFileDialog() { Filter = "Execl files (*.xls)|*.xls", FilterIndex = 0, RestoreDirectory = true, CreatePrompt = true, Title = "Export Excel File" };
             saveFileDialog.ShowDialog();
             if (saveFileDialog.FileName == "")
                 return false;

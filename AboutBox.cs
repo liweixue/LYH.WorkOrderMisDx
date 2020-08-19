@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows.Forms;
 
 namespace LYH.WorkOrder
@@ -36,7 +35,10 @@ namespace LYH.WorkOrder
             }
         }
 
-        public string AssemblyVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public string AssemblyVersion
+        {
+            get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+        }
 
         public string AssemblyDescription
         {

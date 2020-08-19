@@ -86,14 +86,18 @@
             // 
             // dgvProcCardNo
             // 
+            this.dgvProcCardNo.AllowUserToAddRows = false;
+            this.dgvProcCardNo.AllowUserToDeleteRows = false;
             this.dgvProcCardNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvProcCardNo.BackgroundColor = System.Drawing.Color.White;
             this.dgvProcCardNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProcCardNo.Location = new System.Drawing.Point(5, 36);
             this.dgvProcCardNo.Name = "dgvProcCardNo";
+            this.dgvProcCardNo.ReadOnly = true;
+            this.dgvProcCardNo.RowHeadersVisible = false;
             this.dgvProcCardNo.RowTemplate.Height = 23;
-            this.dgvProcCardNo.Size = new System.Drawing.Size(167, 452);
+            this.dgvProcCardNo.Size = new System.Drawing.Size(215, 452);
             this.dgvProcCardNo.TabIndex = 9;
             this.dgvProcCardNo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProcCardNo_CellClick);
             // 
@@ -141,10 +145,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(178, 36);
+            this.dataGridView3.Location = new System.Drawing.Point(219, 36);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowTemplate.Height = 23;
-            this.dataGridView3.Size = new System.Drawing.Size(630, 452);
+            this.dataGridView3.Size = new System.Drawing.Size(589, 452);
             this.dataGridView3.TabIndex = 4;
             // 
             // btnPrint2

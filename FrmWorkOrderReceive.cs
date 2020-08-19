@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using LYH.Framework.Commons;
 using LYH.WorkOrder.Properties;
 using LYH.WorkOrder.share;
 
@@ -57,7 +58,7 @@ namespace LYH.WorkOrder
                     _cust = dr["kehu"].ToString().Trim();
                     _deliveryDate = dr["jiaohuoqi"].ToString().Trim();
                     _prtDwgNo = dr["chanpintuhao"].ToString().Trim();
-                    _prtName = dr["chanpinmingcheng"].ToString().Trim();
+                    _prtName = dr["chanpinmingcheng"].ToString().Trim().Replace("'","''");
                     _pageNum = dr["tuzhiyema"].ToString().Trim();
                     _material = dr["cailiao"].ToString().Trim();
                     _orderNo = dr["dingdanhao"].ToString().Trim();
@@ -199,9 +200,9 @@ namespace LYH.WorkOrder
                 SqlHelper.ExecuteNonQuery(SqlHelper.GetConnection(), CommandType.Text, sqltk);
                 BindDataDgv2();
                 BindDataDgv3();
+                ActiveFrmProcCardBom();
                 txtWONo.Text = "";
                 txtCraftSeq.Text = "";
-                ActiveFrmProcCardBom();
             }
             else
             {
@@ -214,7 +215,7 @@ namespace LYH.WorkOrder
 
         private void ActiveFrmProcCardBom()
         {
-            var frmProcCardBom = (FrmProcCardBom) ChildWinManage.LoadMdiForm(this.MdiParent, typeof(FrmProcCardBom));
+            var frmProcCardBom = (FrmProcCardBom) ChildWinManagement.LoadMdiForm(this.MdiParent, typeof(FrmProcCardBom));
             frmProcCardBom.InitProcCard(txtWONo.Text.Trim());
         }
 

@@ -36,11 +36,17 @@ namespace LYH.WorkOrder.share
         /// <summary>
         ///     根据阿拉伯数字返回月份的名称(可更改为某种语言)
         /// </summary>
-        public static string[] Monthes => new[]
+        public static string[] Monthes
         {
-            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-            "November", "December"
-        };
+            get
+            {
+                return new[]
+                {
+                    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+                    "November", "December"
+                };
+            }
+        }
 
         /// <summary>
         ///     得到正则编译参数设置

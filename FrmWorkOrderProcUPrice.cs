@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using LYH.Framework.Commons;
 using LYH.WorkOrder.share;
 using SqlHelper = LYH.WorkOrder.share.SqlHelper;
 
@@ -21,9 +20,9 @@ namespace LYH.WorkOrder
             BindData();
             if (SqlHelper.UserType != Properties.Resources.UT_Check && SqlHelper.UserType != Properties.Resources.UT_Admin)
             {
-                btnAdd.Visible = false;
-                btnUpd.Visible = false;
-                btnDel.Visible = false;
+                btnAdd.Enabled = false;
+                btnUpd.Enabled = false;
+                btnDel.Enabled = false;
             }
         }
 

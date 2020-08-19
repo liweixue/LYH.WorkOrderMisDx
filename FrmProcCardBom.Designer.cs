@@ -669,7 +669,7 @@ namespace LYH.WorkOrder
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(81, 28);
             this.btnFinish.TabIndex = 33;
-            this.btnFinish.Text = "&F生成工艺卡";
+            this.btnFinish.Text = "&F生成";
             this.btnFinish.UseVisualStyleBackColor = true;
             this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 

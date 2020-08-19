@@ -161,7 +161,7 @@ namespace LYH.WorkOrder
             this.ssbCust.Location = new System.Drawing.Point(209, 13);
             this.ssbCust.MaxItemCount = 20;
             this.ssbCust.Name = "ssbCust";
-            this.ssbCust.SearchMode = SearchMode.Contains;
+            this.ssbCust.SearchMode = SpellSearchBoxEx.SearchMode.Contains;
             this.ssbCust.Size = new System.Drawing.Size(100, 23);
             this.ssbCust.SpellSearchSource = null;
             this.ssbCust.TabIndex = 2;
@@ -196,7 +196,7 @@ namespace LYH.WorkOrder
             // 
             this.dtEnd.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtEnd.Location = new System.Drawing.Point(570, 44);
-            this.dtEnd.MaxDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
+            this.dtEnd.MaxDate = new System.DateTime(2079, 6, 6, 0, 0, 0, 0);
             this.dtEnd.MinDate = new System.DateTime(2011, 1, 1, 0, 0, 0, 0);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.Size = new System.Drawing.Size(127, 23);
@@ -207,7 +207,7 @@ namespace LYH.WorkOrder
             // 
             this.dtBegin.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtBegin.Location = new System.Drawing.Point(570, 13);
-            this.dtBegin.MaxDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
+            this.dtBegin.MaxDate = new System.DateTime(2079, 6, 6, 0, 0, 0, 0);
             this.dtBegin.MinDate = new System.DateTime(2011, 1, 1, 0, 0, 0, 0);
             this.dtBegin.Name = "dtBegin";
             this.dtBegin.Size = new System.Drawing.Size(127, 23);

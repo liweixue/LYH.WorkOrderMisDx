@@ -16,10 +16,12 @@ namespace LYH.WorkOrder
 
         public FrmProcCardBom()
         {
+            ProcCard = new ProcCard();
             //KeyDown += FrmWin_KeyDown;
             InitializeComponent();
         }
 
+        public ProcCard ProcCard { get; }
         private void FrmWin_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -74,8 +76,7 @@ namespace LYH.WorkOrder
         /// </summary>
         private void Dgv2BindData()
         {
-            //,yema '页码'
-            var sql = $"SELECT distinct tuhao '图号' FROM udtwo WHERE DeptId='{SqlHelper.DeptId}'";
+            var sql = $"SELECT distinct tuhao '图号',yema '页码' FROM udtwo WHERE DeptId='{SqlHelper.DeptId}'";
             var ds = SqlHelper.ExecuteDataset(SqlHelper.GetConnection(), CommandType.Text, sql);
             dataGridView2.DataSource = ds.Tables[0];
             dataGridView2.Columns[0].Width = 200;
@@ -517,19 +518,24 @@ namespace LYH.WorkOrder
                 txtWONo.Focus();
                 return;
             }
-            var isOk= new ProcCard().Insert(txtWONo.Text.Trim());
+            var isOk= ProcCard.InsertOrUpdate(txtWONo.Text.Trim());
             if (!isOk)
             {
                 MessageBox.Show("工艺卡生成失败!");
                 return;
             }
-            if (string.IsNullOrEmpty(SqlHelper.InstructionNo))
+            else
+            {
+                MessageUtil.ShowTips("完成");
+            }
+            if (string.IsNullOrEmpty(SqlHelper.ProcCardNo))
             {
                 MessageBox.Show("无工艺卡号,请在生成与打印里查找出工艺卡号再打印!");
-                return;
             }
-            var aboutForm = new FrmPrint();
-            aboutForm.ShowDialog();
+
+            //btnPrint_Click(sender, e);
+            //var aboutForm = new FrmPrint();
+            //aboutForm.ShowDialog();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -540,22 +546,26 @@ namespace LYH.WorkOrder
                 txtWONo.Focus();
                 return;
             }
-            var sql = $"SELECT TOP 1 zling FROM dbo.udstr WHERE sgdhao='{txtWONo.Text.Trim()}'";
-            var dataReader = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
-            if (!dataReader.HasRows)
-            {
-                return;
-            }
-            dataReader.Read();
-            var procCardNo = dataReader[0].ToString().Trim();
-            dataReader.Close();
-            if (string.IsNullOrEmpty(procCardNo))
+            //var sql = "SELECT TOP 1 zling FROM udstr a INNER JOIN udone b ON b.sgdhao = a.sgdhao " +
+            //          "INNER JOIN DZDJ.dbo.TB_Dept c ON c.ID = b.DeptId " +
+            //          $"WHERE zling = '{SqlHelper.ProcCardNo}' AND b.DeptId=" + SqlHelper.DeptId + " ORDER BY a.zling DESC";
+            //var dataReader = SqlHelper.ExecuteReader(SqlHelper.GetConnection(), CommandType.Text, sql);
+            //if (!dataReader.HasRows)
+            //{
+            //    return;
+            //}
+            //dataReader.Read();
+            //var procCardNo = dataReader[0].ToString().Trim();
+            //dataReader.Close();
+            if (!ProcCard.IsExistsProcCardNo(txtWONo.Text.Trim()))
             {
                 MessageBox.Show("尚未生成工艺卡,请使用生成并打印按键!");
             }
-            SqlHelper.InstructionNo = procCardNo;
-            var aboutForm = new FrmPrint();
-            aboutForm.ShowDialog();
+            //var aboutForm = new FrmPrint();
+            //aboutForm.ShowDialog();
+            ProcCard.SaveExcel(SqlHelper.ProcCardNo, out var error);
+            if (!string.IsNullOrEmpty(error)) MessageUtil.ShowError(error);
+
         }
 
         public void InitProcCard(string wONo)

@@ -32,50 +32,49 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProcCardTeam));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpd = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(226, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 41);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "&A新增";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Location = new System.Drawing.Point(226, 21);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(67, 41);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "&A新增";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnUpd
             // 
-            this.button2.Location = new System.Drawing.Point(308, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 41);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "&X修改";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnUpd.Location = new System.Drawing.Point(308, 21);
+            this.btnUpd.Name = "btnUpd";
+            this.btnUpd.Size = new System.Drawing.Size(67, 41);
+            this.btnUpd.TabIndex = 1;
+            this.btnUpd.Text = "&X修改";
+            this.btnUpd.UseVisualStyleBackColor = true;
+            this.btnUpd.Click += new System.EventHandler(this.btnUpd_Click);
             // 
-            // button3
+            // btnDel
             // 
-            this.button3.Location = new System.Drawing.Point(390, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 41);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "&D删除";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnDel.Location = new System.Drawing.Point(390, 21);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(67, 41);
+            this.btnDel.TabIndex = 2;
+            this.btnDel.Text = "&D删除";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // label1
             // 
@@ -143,48 +142,40 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(81, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 20);
             this.comboBox1.TabIndex = 17;
             // 
-            // textBox1
+            // btnCancel
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.Visible = false;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(472, 21);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 41);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "&C取消";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnCancel.Location = new System.Drawing.Point(472, 21);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(67, 41);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "&C取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnDel);
+            this.panel1.Controls.Add(this.btnUpd);
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(561, 82);
             this.panel1.TabIndex = 20;
             // 
-            // FrmCncTeam
+            // FrmProcCardTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,7 +185,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FrmProcCardTeam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "员工管理";
+            this.Load += new System.EventHandler(this.FrmProcCardTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -204,16 +197,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpd;
+        private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel1;
     }
 }

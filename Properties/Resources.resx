@@ -202,4 +202,10 @@
   <data name="C取消" xml:space="preserve">
     <value>&amp;C取消</value>
   </data>
+  <data name="P普冲" xml:space="preserve">
+    <value>普冲</value>
+  </data>
+  <data name="Y压段差" xml:space="preserve">
+    <value>压段差</value>
+  </data>
 </root>
